@@ -1,4 +1,5 @@
 from reportlab.lib.pagesizes import letter
+# from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 import datetime
@@ -23,103 +24,112 @@ i = 0
 while i < 2:
 
     while True:
-        lt = float(input("Enter your LAYER THICKNESS(in CM)[0-100]:  "))
+        while True:
+            lt = input("Enter your LAYER THICKNESS(in CM)[0-100]:  ")
+            try:
+                if 0 <= float(lt) <= 100:
+                    break
+                else:
+                    print("Enter the LAYER THICKNESS(in CM)[0-100]")
+                    continue
+            except ValueError:
+                print("Input Error")
         try:
-            if 0 <= lt < 0.4:
+            if 0 <= float(lt) < 0.4:
                 ltr = 0
                 print("Layer thickness Rating is ", ltr)
-            elif 0.4 <= lt < 0.8:
+            elif 0.4 <= float(lt) < 0.8:
                 ltr = 1
                 print("Layer thickness Rating is ", ltr)
-            elif 0.8 <= lt < 1.2:
+            elif 0.8 <= float(lt) < 1.2:
                 ltr = 3
                 print("Layer thickness Rating is ", ltr)
-            elif 1.2 <= lt < 1.6:
+            elif 1.2 <= float(lt) < 1.6:
                 ltr = 4
                 print("Layer thickness Rating is ", ltr)
-            elif 1.6 <= lt < 2.0:
+            elif 1.6 <= float(lt) < 2.0:
                 ltr = 4
                 print("Layer thickness Rating is ", ltr)
-            elif 2 <= lt < 2.5:
+            elif 2 <= float(lt) < 2.5:
                 ltr = 5
                 print("Layer thickness Rating is ", ltr)
-            elif 2.5 <= lt < 3.3:
+            elif 2.5 <= float(lt) < 3.3:
                 ltr = 6
                 print("Layer thickness Rating is ", ltr)
-            elif 3.3 <= lt < 3.7:
+            elif 3.3 <= float(lt) < 3.7:
                 ltr = 7
                 print("Layer thickness Rating is ", ltr)
-            elif 3.7 <= lt < 4.3:
+            elif 3.7 <= float(lt) < 4.3:
                 ltr = 8
                 print("Layer thickness Rating is ", ltr)
-            elif 4.3 <= lt < 5.0:
+            elif 4.3 <= float(lt) < 5.0:
                 ltr = 9
                 print("Layer thickness Rating is ", ltr)
-            elif 5.0 <= lt < 5.6:
+            elif 5.0 <= float(lt) < 5.6:
                 ltr = 10
                 print("Layer thickness Rating is ", ltr)
-            elif 5.6 <= lt < 6.2:
+            elif 5.6 <= float(lt) < 6.2:
                 ltr = 11
                 print("Layer thickness Rating is ", ltr)
-            elif 6.2 <= lt < 6.5:
+            elif 6.2 <= float(lt) < 6.5:
                 ltr = 12
                 print("Layer thickness Rating is ", ltr)
-            elif 6.5 <= lt < 7.5:
+            elif 6.5 <= float(lt) < 7.5:
                 ltr = 13
                 print("Layer thickness Rating is ", ltr)
-            elif 7.5 <= lt < 9.0:
+            elif 7.5 <= float(lt) < 9.0:
                 ltr = 14
                 print("Layer thickness Rating is ", ltr)
-            elif 9 <= lt < 10.5:
+            elif 9 <= float(lt) < 10.5:
                 ltr = 15
                 print("Layer thickness Rating is ", ltr)
-            elif 10.5 <= lt < 12:
+            elif 10.5 <= float(lt) < 12:
                 ltr = 16
                 print("Layer thickness Rating is ", ltr)
-            elif 12 <= lt < 13.6:
+            elif 12 <= float(lt) < 13.6:
                 ltr = 17
                 print("Layer thickness Rating is ", ltr)
-            elif 13.6 <= lt < 15.3:
+            elif 13.6 <= float(lt) < 15.3:
                 ltr = 18
                 print("Layer thickness Rating is ", ltr)
-            elif 15.3 <= lt < 17:
+            elif 15.3 <= float(lt) < 17:
                 ltr = 19
                 print("Layer thickness Rating is ", ltr)
-            elif 17 <= lt < 19:
+            elif 17 <= float(lt) < 19:
                 ltr = 20
                 print("Layer thickness Rating is ", ltr)
-            elif 19 <= lt < 22:
+            elif 19 <= float(lt) < 22:
                 ltr = 21
                 print("Layer thickness Rating is ", ltr)
-            elif 22 <= lt < 25:
+            elif 22 <= float(lt) < 25:
                 ltr = 22
                 print("Layer thickness Rating is ", ltr)
-            elif 25 <= lt < 30:
+            elif 25 <= float(lt) < 30:
                 ltr = 23
                 print("Layer thickness Rating is ", ltr)
-            elif 30 <= lt < 35:
+            elif 30 <= float(lt) < 35:
                 ltr = 24
                 print("Layer thickness Rating is ", ltr)
-            elif 35 <= lt < 40:
+            elif 35 <= float(lt) < 40:
                 ltr = 25
                 print("Layer thickness Rating is ", ltr)
-            elif 40 <= lt < 45:
+            elif 40 <= float(lt) < 45:
                 ltr = 26
                 print("Layer thickness Rating is ", ltr)
-            elif 45 <= lt < 50:
+            elif 45 <= float(lt) < 50:
                 ltr = 27
                 print("Layer thickness Rating is ", ltr)
-            elif 50 <= lt < 60:
+            elif 50 <= float(lt) < 60:
                 ltr = 28
                 print("Layer thickness Rating is ", ltr)
-            elif 60 <= lt < 75:
+            elif 60 <= float(lt) < 75:
                 ltr = 29
                 print("Layer thickness Rating is ", ltr)
-            elif 75 <= lt <= 100:
+            elif 75 <= float(lt) <= 100:
                 ltr = 30
                 print("Layer thickness Rating is ", ltr)
             else:
-                print(f"Invalid Input \nYour Input {lt}\nPlease Enter the Layer Thickness in [0-100]cm")
+                print(f"Invalid Input \nYour Input {float(lt)}\nPlease Enter the Layer Thickness in [0-100]cm")
                 continue
             ltr_r.append(ltr)
             break
@@ -128,61 +138,71 @@ while i < 2:
 
     print("--------*******--------********-------------**********------------*******---------")
     while True:
-        sti = float(input("Enter your STRUCTURAL Indices[0-16]:  "))
+        while True:
+            try:
+                sti = input("Enter your STRUCTURAL Indices[0-16]:  ")
+                if 0 <= int(sti) <= 16:
+                    break
+                else:
+                    print("Enter your STRUCTURAL Indices[0-16]: ")
+                    continue
+            except ValueError:
+                print("Invalid Input")
+
         try:
-            if sti == 16:
+            if int(sti) == 16:
                 struct_rating = 1
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 15:
+            elif int(sti) == 15:
                 struct_rating = 3
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 14:
+            elif int(sti) == 14:
                 struct_rating = 5
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 13:
+            elif int(sti) == 13:
                 struct_rating = 7
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 12:
+            elif int(sti) == 12:
                 struct_rating = 8
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 11:
+            elif int(sti) == 11:
                 struct_rating = 9
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 10:
+            elif int(sti) == 10:
                 struct_rating = 11
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 9:
+            elif int(sti) == 9:
                 struct_rating = 12
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 8:
+            elif int(sti) == 8:
                 struct_rating = 13
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 7:
+            elif int(sti) == 7:
                 struct_rating = 14
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 6:
+            elif int(sti) == 6:
                 struct_rating = 16
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 5:
+            elif int(sti) == 5:
                 struct_rating = 17
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 4:
+            elif int(sti) == 4:
                 struct_rating = 19
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 3:
+            elif int(sti) == 3:
                 struct_rating = 21
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 2:
+            elif int(sti) == 2:
                 struct_rating = 23
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 1:
+            elif int(sti) == 1:
                 struct_rating = 24
                 print("Your Structural Rating is ", struct_rating)
-            elif sti == 0:
+            elif int(sti) == 0:
                 struct_rating = 25
                 print("Your Structural Rating is ", struct_rating)
             else:
-                print(f"Invalid Input \nYour Input {sti}\nPlease Enter the Structural Rating again in [0-16]cm")
+                print(f"Invalid Input \nYour Input {int(sti)}\nPlease Enter the Structural Rating again in [0-16]cm")
                 continue
             struct_rating_r.append(struct_rating)
             break
@@ -190,74 +210,83 @@ while i < 2:
             print("Invalid Input")
     print("--------*******--------********-------------**********------------*******---------")
     while True:
-        sld = float(input("Enter your SLAKE DURABILITY(I) index % [0-100]:  "))
+        while True:  
+            try:
+                sld = float(input("Enter your SLAKE DURABILITY(I) index % [0-100]:  "))
+                if 0<= float(sld) <=100:
+                    break
+                else:
+                    print("Enter your SLAKE DURABILITY(I) index % [0-100]:  ")
+                    continue
+            except ValueError:
+                print("Invalid Input")
         try:
-            if 0 <= sld < 30:
+            if 0 <= float(sld) < 30:
                 sdr = 0
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 30 <= sld < 40:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 30 <= float(sld) < 40:
                 sdr = 1
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 40 <= sld < 50:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 40 <= float(sld) < 50:
                 sdr = 2
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 50 <= sld < 60:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 50 <= float(sld) < 60:
                 sdr = 3
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 60 <= sld < 65:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 60 <= float(sld) < 65:
                 sdr = 4
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 65 <= sld < 70:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 65 <= float(sld) < 70:
                 sdr = 5
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 70 <= sld < 75:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 70 <= float(sld) < 75:
                 sdr = 6
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 75 <= sld < 80:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 75 <= float(sld) < 80:
                 sdr = 7
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 80 <= sld < 85:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 80 <= float(sld) < 85:
                 sdr = 8
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 85 <= sld < 87.4:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 85 <= float(sld) < 87.4:
                 sdr = 9
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 87.4 <= sld < 89:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 87.4 <= float(sld) < 89:
                 sdr = 10
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 89 <= sld < 92.2:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 89 <= float(sld) < 92.2:
                 sdr = 11
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 92.2 <= sld < 94.6:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 92.2 <= float(sld) < 94.6:
                 sdr = 12
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 94.6 <= sld < 97:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 94.6 <= float(sld) < 97:
                 sdr = 13
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 97 <= sld < 97.5:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 97 <= float(sld) < 97.5:
                 sdr = 14
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 97.5 <= sld < 98:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 97.5 <= float(sld) < 98:
                 sdr = 15
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 98 <= sld < 98.5:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 98 <= float(sld) < 98.5:
                 sdr = 16
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 98.5 <= sld < 99:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 98.5 <= float(sld) < 99:
                 sdr = 17
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif sld >= 99.3 > sld:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif float(sld) >= 99.3 > float(sld):
                 sdr = 18
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif 99.3 <= sld < 99.6:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif 99.3 <= float(sld) < 99.6:
                 sdr = 19
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
-            elif sld == 100:
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
+            elif float(sld) == 100:
                 sdr = 20
-                print("Your Slake Durability Rating for {} % is {} ".format(sld, sdr))
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
 
             else:
-                print(f"Invalid Input \nYour Input {sld}\nPlease Enter the Slake Durability rating in [0-100]")
+                print(f"Invalid Input \nYour Input {float(sld)}\nPlease Enter the Slake Durability rating in [0-100]")
                 continue
             sdr_r.append(sdr)
             break
@@ -266,61 +295,69 @@ while i < 2:
     print("--------*******--------********-------------**********------------*******---------")
 
     while True:
-
-        rst = float(input("Enter your Rock STRENGTH (kg/cm²):  "))
+        while True:
+            try:
+                rst = input("Enter your Rock STRENGTH (kg/cm²):  ")
+                if float(rst) >=0:
+                    break
+                else:
+                    print("Enter your Rock STRENGTH (kg/cm²):  ")
+                    continue
+            except ValueError:
+                print("Invalid Input")
         try:
 
-            if 30 > rst >= 0:
+            if 30 > float(rst) >= 0:
 
                 rsr = 0
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 30 <= rst < 65:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 30 <= float(rst) < 65:
                 rsr = 1
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 65 <= rst < 100:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 65 <= float(rst) < 100:
                 rsr = 2
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 100 <= rst < 150:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 100 <= float(rst) < 150:
                 rsr = 3
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 150 <= rst < 200:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 150 <= float(rst) < 200:
                 rsr = 4
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 200 <= rst < 250:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 200 <= float(rst) < 250:
                 rsr = 5
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 250 <= rst < 300:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 250 <= float(rst) < 300:
                 rsr = 6
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 300 <= rst < 375:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 300 <= float(rst) < 375:
                 rsr = 7
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 375 <= rst < 450:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 375 <= float(rst) < 450:
                 rsr = 8
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 450 <= rst < 525:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 450 <= float(rst) < 525:
                 rsr = 9
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 525 <= rst < 600:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 525 <= float(rst) < 600:
                 rsr = 10
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 600 <= rst < 700:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 600 <= float(rst) < 700:
                 rsr = 11
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 700 <= rst < 800:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 700 <= float(rst) < 800:
                 rsr = 12
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 800 <= rst < 900:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 800 <= float(rst) < 900:
                 rsr = 13
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif 900 <= rst < 1500:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif 900 <= float(rst) < 1500:
                 rsr = 14
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
-            elif rst >= 1500:
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
+            elif float(rst) >= 1500:
                 rsr = 15
-                print("Rock Strength Rating at {} kg/cm² is {}".format(rst, rsr))
+                print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
             else:
-                print(f"Invalid input Rock Strength must be positive\nYou Entered {rst}")
+                print(f"Invalid input Rock Strength must be positive\nYou Entered {float(rst)}")
                 continue
             rsr_r.append(rsr)
             break
@@ -329,44 +366,52 @@ while i < 2:
 
     print("--------*******--------********-------------**********------------*******---------")
     while True:
-
-        print("Press 0 for dry ground surface")
-        grs = float(input("enter your GROUND SEEPAGE (ml/min):  "))
+        while True:
+            try:
+                print("Press 0 for dry ground surface")        
+                grs = float(input("Enter your GROUND SEEPAGE (ml/min):  "))
+                if float(grs) >= 0:
+                    break
+                else:
+                    print("Enter your GROUND SEEPAGE (ml/min) Again :  ")
+                    continue
+            except ValueError:
+                print("Invalid Input")
         try:
-            if grs > 5000:
+            if float(grs) > 5000:
                 gsr = 0
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 2000 < grs <= 5000:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 2000 < float(grs) <= 5000:
                 gsr = 1
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 800 < grs <= 2000:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 800 < float(grs) <= 2000:
                 gsr = 2
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 300 < grs <= 800:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 300 < float(grs) <= 800:
                 gsr = 3
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 200 < grs <= 300:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 200 < float(grs) <= 300:
                 gsr = 4
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 140 < grs <= 200:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 140 < float(grs) <= 200:
                 gsr = 5
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 80 < grs <= 140:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 80 < float(grs) <= 140:
                 gsr = 6
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 20 < grs <= 80:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 20 < float(grs) <= 80:
                 gsr = 7
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 10 < grs <= 20:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 10 < float(grs) <= 20:
                 gsr = 8
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif 0 < grs <= 10:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif 0 < float(grs) <= 10:
                 gsr = 9
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
-            elif grs == 0:
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
+            elif float(grs) == 0:
                 gsr = 10
                 print("Wow dry ground seepage\ngreat")
-                print("Ground Seepage Rating for {}ml/min is {}".format(grs, gsr))
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             else:
                 print("GRS Input cant be Negative \nEnter the Value again!!")
                 continue
@@ -879,20 +924,20 @@ content = [
     Paragraph("Adjusted RMR After Calculating Depth [<b>{} m</b>] : <b>{:.2f}</b>".format(armr_d[0], armr_d[1])),
     Paragraph("Adjusted RMR After Calculating Lateral Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[2], armr_d[3])),
     Paragraph("Adjusted RMR After Calculating Induced Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[4], armr_d[5])),
-    Paragraph("Adjusted RMR After Calculating Method of Mining [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[6], armr_d[7])),
+    Paragraph("Adjusted RMR After Calculating Mining Method [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[6], armr_d[7])),
     Paragraph("Adjusted RMR After Calculating Gallery Width [<b>{}</b>] : <b>{:.2f}</b>".format(t3, armr_d[8])),
     Paragraph(f'Final RMR of Mine:<b> {armr:.2f}</b>'),
     Paragraph(f'Remarks : <b>{rmr_classification} </b>', normal_style),
-    Paragraph("Suggestion Based Upon Observation of Mine",normal_style),
+    Paragraph("Suggestion Based Upon Observation of Mine", normal_style),
     Paragraph("-----------------------------------------------------------------------------------"),
     Paragraph(f"Roof Support Provided in Gallery : <b>{armr_d[10]}</b>"),
     Paragraph("Factor of Safety at Gallery is <b>{:.2f}</b>".format(fos_g), normal_style),
     Paragraph("Number of Bolts Required At Gallery is <b>{}</b>".format(b_g), normal_style),
-    Paragraph('Spacing Between Bolts in Gallery is <b>{} m</b>'.format(format(Bolts_spacing_Gallery, '0.2f')), normal_style),
+    Paragraph('Bolts Spacing in Gallery is <b>{} m</b>'.format(format(Bolts_spacing_Gallery, '0.2f')), normal_style),
     Paragraph(f"Roof Support Provided at Junction : <b>{armr_d[11]}</b>"),
     Paragraph("Factor of Safety at Junction is <b>{:.2f}</b>".format(fos_j), normal_style),
     Paragraph("Number of Bolts Required At Junction is <b>{}X{} is {}</b>".format(b, b, pow(b, 2)), normal_style),
-    Paragraph('Spacing Between Bolts in Junction : <b>{} m</b>'.format(format(Bolts_spacing_Junction, '0.2f')), normal_style),
+    Paragraph('Bolts Spacing at Junction : <b>{} m</b>'.format(format(Bolts_spacing_Junction, '0.2f')), normal_style),
     Paragraph("-----------------------------------------------------------------------------------"),
     Spacer(1, 14),
     Paragraph(f"<b>Report Generated @: {datetime.datetime.now()}</b>", normal_style),

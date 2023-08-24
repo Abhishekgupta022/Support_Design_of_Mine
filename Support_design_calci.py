@@ -1,5 +1,4 @@
 from reportlab.lib.pagesizes import letter
-# from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 import datetime
@@ -884,6 +883,8 @@ content = [
     Paragraph("Adjusted RMR After Calculating Gallery Width [<b>{}</b>] : <b>{:.2f}</b>".format(t3, armr_d[8])),
     Paragraph(f'Final RMR of Mine:<b> {armr:.2f}</b>'),
     Paragraph(f'Remarks : <b>{rmr_classification} </b>', normal_style),
+    Paragraph("Suggestion Based Upon Observation of Mine",normal_style),
+    Paragraph("-----------------------------------------------------------------------------------"),
     Paragraph(f"Roof Support Provided in Gallery : <b>{armr_d[10]}</b>"),
     Paragraph("Factor of Safety at Gallery is <b>{:.2f}</b>".format(fos_g), normal_style),
     Paragraph("Number of Bolts Required At Gallery is <b>{}</b>".format(b_g), normal_style),

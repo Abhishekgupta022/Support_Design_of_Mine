@@ -12,8 +12,9 @@ The project will be developed using the Python programming language. Python's ve
 2. **Roof Bolt Calculation:** The program will determine the optimal number of roof bolts needed at junctions and galleries within the mine. Roof bolts play a vital role in providing support and preventing collapses in underground mines.
 
 3. **Recommendations:** Based on the calculated RMR and roof bolt requirements, the project will generate recommendations for each mine. These recommendations may include adjustments to support systems, reinforcement strategies, and other safety measures to enhance the overall safety of the mine.
+4. **Report PDF:** Added ferutres of report making ability automatically
 
-4. **Error Handling:** Robust error handling mechanisms will be implemented to identify and address issues that may arise during data processing, calculations, and analysis. This will ensure that the results provided are accurate and reliable.
+5. **Error Handling:** Robust error handling mechanisms will be implemented to identify and address issues that may arise during data processing, calculations, and analysis. This will ensure that the results provided are accurate and reliable.
 
 ### Conclusion
 The "RMR & Support Design" project aims to enhance safety in underground coal and metal mines by leveraging Python for accurate RMR calculations, roof bolt determination, and providing practical recommendations for improving mine safety. By utilizing advanced techniques and error handling mechanisms, the project seeks to contribute significantly to the reduction of potential hazards and risks associated with underground mining operations. Ultimately, the project's successful implementation will contribute to creating safer working environments and more sustainable mining practices.

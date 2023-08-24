@@ -1,7 +1,23 @@
+from reportlab.lib.pagesizes import letter
+# from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+import datetime
 print("--------*******--------********-------------**********------------*******---------")
+mine_name = input("Enter Mine Name: ")
+location = input("Location of Mine: ")
+owner = input("Owner of Mine: ")
+ore = input("Enter Ore Types: ")
 
+
+ltr = struct_rating = rsr = b = b_g = sdr = gsr = Bolts_spacing_Junction = Bolts_spacing_Gallery = 0
 rmr = []
-ltr = struct_rating = rsr = b = b_g = sdr = gsr = 0
+ltr_r = []
+struct_rating_r = []
+rsr_r = []
+sdr_r = []
+gsr_r = []
+armr_d = []
 fos_g = fos_j = Rock_load_Gallery = Rock_load_Junction = 0
 
 i = 0
@@ -106,6 +122,7 @@ while i < 2:
             else:
                 print(f"Invalid Input \nYour Input {lt}\nPlease Enter the Layer Thickness in [0-100]cm")
                 continue
+            ltr_r.append(ltr)
             break
         except ValueError:
             print("Invalid Input")
@@ -168,6 +185,7 @@ while i < 2:
             else:
                 print(f"Invalid Input \nYour Input {sti}\nPlease Enter the Structural Rating again in [0-16]cm")
                 continue
+            struct_rating_r.append(struct_rating)
             break
         except ValueError:
             print("Invalid Input")
@@ -242,6 +260,7 @@ while i < 2:
             else:
                 print(f"Invalid Input \nYour Input {sld}\nPlease Enter the Slake Durability rating in [0-100]")
                 continue
+            sdr_r.append(sdr)
             break
         except ValueError:
             print("Invalid Input")
@@ -304,6 +323,7 @@ while i < 2:
             else:
                 print(f"Invalid input Rock Strength must be positive\nYou Entered {rst}")
                 continue
+            rsr_r.append(rsr)
             break
         except ValueError:
             print("Invalid Input")
@@ -351,15 +371,13 @@ while i < 2:
             else:
                 print("GRS Input cant be Negative \nEnter the Value again!!")
                 continue
+            gsr_r.append(gsr)
             break
         except ValueError:
             print("Invalid Input")
     print("--------*******--------********-------------**********------------*******---------")
-
     rmr.append(ltr + struct_rating + sdr + rsr + gsr)
-
     i += 1
-
 print("RMR of Coal/Metal is", rmr[0])
 print("Rmr of Shale/Sandstone is", rmr[1])
 print("--------*******--------********-------------**********------------*******---------")
@@ -384,6 +402,7 @@ print("Combined RMR is {}".format(format(crmr, '0.2f')))
 print("--------*******--------********-------------**********------------*******---------")
 print("Now we have to Calculate Adjusted RMR")
 depth = float(input("Enter the depth(in m):  "))
+armr_d.append(depth)
 if depth < 250:
     armr = crmr * 1
 elif 250 <= depth < 400:
@@ -393,82 +412,83 @@ elif 400 <= depth < 600:
 else:
     armr = crmr * 0.7
 print("ARMR AFTER DEPTH calculation is {} ".format(format(armr, '0.2f')))
+armr_d.append(armr)
 print("--------*******--------********-------------**********------------*******---------")
 
 print("CONDITIONS FOR LATERAL STRESS!!!!")
-print("Press 1 for SMALL STRESS\nPress 2 for MEDIUM STRESS\nPress 3 for HIGH STRESS ")
-while True:
-    lateral_stress = float(input("Press 1 OR 2 OR 3 according to your data:  "))
-    try:
+options = ['SMALL STRESS', 'MEDIUM STRESS', 'HIGH STRESS', 'If You dont Know Data']
+for index, option in enumerate(options, start=1):
+    print(f"Press {index} for {option}")
 
-        if lateral_stress == 1:
-            armr = armr * 0.9
-        elif lateral_stress == 2:
-            armr = armr * 0.8
-        elif lateral_stress == 3:
-            armr = armr * 0.7
+while True:
+    lateral_stress = int(input("Press Lateral Stress Conditions Carefully:  "))
+    try:
+        if 1<= lateral_stress <= len(options):
+            armr = armr*[0.9, 0.8, 0.7, 0.9][lateral_stress-1]
+            armr_d.append(options[lateral_stress-1])
+            break
         else:
-            print("Invalid Input\nPlease Enter 1 or 2 or 3")
+            print("Invalid Input\nPlease Enter Conditions Again")
             continue
-        break
     except ValueError:
         print("Invalid Input")
 print("ARMR after including lateral stress is {}".format(format(armr, '0.2f')))
+armr_d.append(armr)
 print("--------*******--------********-------------**********------------*******---------")
 print("CONDITION FOR INDUCED STRESS!!!")
-print("Press 1 for NO ADJACENT WORKING IN THE SEAM\nPress 2 for EXTRACTION AREA WITHIN 20-40 m IN THE SAME SEAM\n"
-      "Press 3 for EXTRACTION AREA WITHIN 10-20m in the same seam\nPress 4 for working with 10-20m parting\n"
-      "Press 5 for working within 3 - 10m parting\nPress 6 if you dont have this data")
+options = [
+    "NO ADJACENT WORKING IN THE SEAM",
+    "EXTRACTION AREA WITHIN 20-40 m IN THE SAME SEAM",
+    "EXTRACTION AREA WITHIN 10-20m in the same seam",
+    "working with 10-20m parting",
+    "working within 3 - 10m parting",
+    "If you dont have this data"
+]
+
+for index, option in enumerate(options, start=1):
+    print(f"Press {index} for {option}")
+
 while True:
-    induced_stress = float(input("Press THE INDUCED STRESS CONDITION CAREFULLY:  "))
     try:
-        if induced_stress == 1:
-            armr = armr * 1
-        elif induced_stress == 2:
-            armr = armr * 0.9
-        elif induced_stress == 3:
-            armr = armr * 0.75
-        elif induced_stress == 4:
-            armr = armr * 0.9
-        elif induced_stress == 5:
-            armr = armr * 0.75
-        elif induced_stress == 6:
-            print("For Unknown Induced Stress ARMR reduced by 25%")
-            # print("Please Press the respective key:  ")
-            armr = armr * 0.75
+        induced_stress = int(input("Press THE INDUCED STRESS CONDITION CAREFULLY: "))
+        if 1 <= induced_stress <= len(options):
+            armr = armr * [1, 0.9, 0.75, 0.9, 0.75, 0.75, 0.85][induced_stress-1]
+            armr_d.append(options[induced_stress-1])
+
+            break
         else:
             print("Invalid Input")
             continue
-        break
     except ValueError:
         print("Invalid data")
+
 print("ARMR after including INDUCED STRESS is {}".format(format(armr, '0.2f')))
+armr_d.append(armr)
 print("--------*******--------********-------------**********------------*******---------")
 print("CONDITIONS FOR METHOD OF WORKING")
-print("Press 1 for MECHANISED WORKING OR CONTINUOUS MINER\nPress 2 for UNDERCUT AND BLASTING\n"
-      "Press 3 for BLASTING OFF THE SOLID\nPress 4 if you dont know  ")
+options =['MECHANISED WORKING OR CONTINUOUS MINER',
+          'UNDERCUT AND BLASTING',
+          'BLASTING OFF THE SOLID',
+          'if you dont know data']
+for index, option in enumerate(options, start=1):
+    print(f"Press {index} for {option}")
 while True:
-    method_excavation = float(input("Press THE RESPECTIVE KEY CAREFULLY:  "))
+    method_excavation = int(input("Press THE RESPECTIVE KEY CAREFULLY:  "))
+
     try:
-        if method_excavation == 1:
-            armr = armr * 1.1
-        elif method_excavation == 2:
-            armr = armr * 1
-        elif method_excavation == 3:
-            armr = armr * 0.9
-        elif method_excavation == 4:
-            print("PROGRAM GOT TO KNOW THAT YOU DONT HAVE THIS DATA\nSO ARMR  reduced by 15%")
-            armr = armr * 0.85
+        if 1<=method_excavation <= len(options):
+            armr = armr * [1.1, 1, 0.9, 0.9][method_excavation-1]
+            armr_d.append(options[method_excavation-1])
+            break
         else:
             print("Invalid Input\nEnter the Respective Value again!!")
             continue
-        break
 
     except ValueError:
         print("Invalid Input")
 
 print("ARMR after including METHOD OF EXCAVATION is {}".format(format(armr, '0.2f')))
-
+armr_d.append(armr)
 print("--------*******--------********-------------**********------------*******---------")
 Gallery_span = t3 * 1
 print('Gallery Span Already Entered is {} m'.format(t3))
@@ -479,26 +499,28 @@ elif 4.8 <= Gallery_span <= 6:
 else:
     print("ok value will calculated without Gallery_span data")
 print("ARMR after including Gallery calculation is {}".format(format(armr, '0.2f')))
+armr_d.append(armr)
+# print(f"Final RMR : {armr:.2f}")
 print("--------*******--------********-------------**********------------*******---------")
-
+rmr_classification = ""
 if 90 < armr <= 100.0:
-    print("your rmr is {}".format(format(armr, '0.2f')))
-    print("EXCELLENT Rock")
+    print("Final RMR : {}".format(format(armr, '0.2f')))
+    rmr_classification = "EXCELLENT Rock"
 elif 80 <= armr <= 90:
-    print("Your rmr is {}".format(format(armr, '0.2f')))
-    print("VERY GOOD STRATA")
+    print("Final RMR : {}".format(format(armr, '0.2f')))
+    rmr_classification = "VERY GOOD STRATA"
 elif 60 < armr < 80:
-    print("Your rmr is {} ".format(format(armr, '0.2f')))
-    print("GOOD STRATA")
+    print("Final RMR : {} ".format(format(armr, '0.2f')))
+    rmr_classification = "GOOD STRATA"
 elif 40 < armr <= 60:
-    print("Your rmr is {} ".format(format(armr, '0.2f')))
-    print("FAIR STRATA")
+    print("Final RMR : {} ".format(format(armr, '0.2f')))
+    rmr_classification = "FAIR STRATA"
 elif 20 < armr <= 40:
-    print("Your rmr is {}".format(format(armr, '0.2f')))
+    print("Final RMR : {}".format(format(armr, '0.2f')))
     print("POOR STRATA")
 elif 0 < armr <= 20:
-    print("Your rmr is less than 20")
-    print("VERY POOR STRATA")
+    print("Final RMR Less than 20")
+    rmr_classification = "VERY POOR STRATA"
 else:
     print("Armr is {} ".format(format(armr, '0.2f')))
     print("VALUE ABSURD")
@@ -506,8 +528,10 @@ else:
     print("MEASURE RMR INDICES AGAIN")
 print("--------*******--------********-------------**********------------*******---------")
 print("CALCULATING Rock LOAD....")
-print("Press 1 for COAL MINE")
-print("Press 2 for METAL MINE")
+
+options = ['COAL', 'METAL']
+for index, option in enumerate(options, start=1):
+    print(f"Press {index} for {option}")
 
 while True:
 
@@ -515,7 +539,8 @@ while True:
     mean_density = float(input("Enter the mean density (t/m^3): "))
     try:
         if Rock_l == 1:
-            print("You selected the coal mine")
+            print("You selected the Coal mine")
+            armr_d.append('Coal Mine')
             # Gallery_span = float(input("Enter the Gallery span: "))
             print('Gallery Span Already Entered is {} m'.format(t3))
             r_load_height = t3 * (1.7 - 0.037 * armr + 0.0002 * armr ** 2)
@@ -528,6 +553,7 @@ while True:
             print("Good luck!")
         elif Rock_l == 2:
             print("You selected the METAL MINE")
+            armr_d.append('Metal Mine')
             # Gallery_span = float(input("Enter the Gallery span: "))
             print('Gallery Span Already entered is {} m'.format(t3))
             Rock_load_Gallery = ((100 - armr) / armr) * t3 * mean_density
@@ -547,17 +573,16 @@ print("Press other than 1 for exit ")
 
 
 support_design = float(input('Enter the value carefully:  '))
-# fos =0.0
 
 if support_design == 1:
-    # fos = 0.0
     while True:
         try:
-            print('Calculating support design...')
+            print('Calculating Support Design...')
             print('Calculating Number of Bolts for Gallery')
             print("Press 1 for Cement Capsule = 6 tonne\nPress 2 for Resin Bolt = 10 tonne\nPress 3 for your Input")
             support = int(input('Enter Your Input Carefully: '))
             if support == 1:
+                armr_d.append("Cement Capsule 6 tonne")
                 no_of_Bolts_Gallery = (t3 * Rock_load_Gallery) / 6
                 no_of_Bolts_Gallery = round(no_of_Bolts_Gallery)
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
@@ -571,10 +596,10 @@ if support_design == 1:
                 while not (1.6 <= fos_g <= 2.0):
                     # b =  int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Gallery)))
                     if fos_g <= 1.6:
-                        b_g: int = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Gallery)))
+                        b_g: int = int(input("Enter Number of Bolts Greater than {}:  ".format(no_of_Bolts_Gallery)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
-                        b_g: int = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Gallery)))
+                        b_g: int = int(input("Enter Number of Bolts Less than {}:  ".format(no_of_Bolts_Gallery)))
                         print("Your Input: {}".format(b_g))
                     Bolts_spacing_Gallery = t3 / b_g
                     print('Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Gallery, '0.2f')))
@@ -595,6 +620,7 @@ if support_design == 1:
                 print("Number of Bolts Required At Gallery is {}".format(b_g))
 
             elif support == 2:
+                armr_d.append('Resin Bolt 10 tonne')
                 no_of_Bolts_Gallery = (t3 * Rock_load_Gallery) / 10
                 no_of_Bolts_Gallery = round(no_of_Bolts_Gallery)
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
@@ -630,6 +656,7 @@ if support_design == 1:
                 print("Number of Bolts Required At Gallery is {}".format(b_g))
             elif support == 3:
                 a = float(input("Enter the loading capacity in tonne:  "))
+                armr_d.append(f"Others Support {a} tonne")
                 no_of_Bolts_Gallery = (t3 * Rock_load_Gallery) / a
                 no_of_Bolts_Gallery = round(no_of_Bolts_Gallery)
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
@@ -679,10 +706,12 @@ support_j = int(input("Enter the key carefully:  "))
 if support_j == 1:
     while True:
         try:
-            print("Calculating Support Design FOr Junction....")
+            print("Calculating Support Design For Junction....")
             print("Press 1 for Cement Capsule = 6 tonne\nPress 2 for Resin Bolt = 10 tonne\nPress 3 for your Input")
+
             support_ = int(input('Enter Your Input Carefully: '))
             if support_ == 1:
+                armr_d.append('Cement Capsule 6 tonne')
                 no_of_Bolts_Junction = (t3 * t3 * Rock_load_Junction) / 6
                 no_of_Bolts_Junction = pow(no_of_Bolts_Junction, 0.5)
                 no_of_Bolts_Junction = round(no_of_Bolts_Junction)
@@ -721,6 +750,7 @@ if support_j == 1:
                 print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 
             elif support_ == 2:
+                armr_d.append("Resin Bolt 10 tonne")
                 no_of_Bolts_Junction = (t3 * t3 * Rock_load_Junction) / 10
                 no_of_Bolts_Junction = pow(no_of_Bolts_Junction, 0.5)
                 no_of_Bolts_Junction = round(no_of_Bolts_Junction)
@@ -760,6 +790,7 @@ if support_j == 1:
 
             elif support_ == 3:
                 a = float(input("Enter the loading capacity in tonne:  "))
+                armr_d.append(f'Others Support {a} tonne')
                 no_of_Bolts_Junction = (t3 * t3 * Rock_load_Junction) / a
                 no_of_Bolts_Junction = pow(no_of_Bolts_Junction, 0.5)
                 no_of_Bolts_Junction = round(no_of_Bolts_Junction)
@@ -811,3 +842,60 @@ if support_j == 1:
     print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 else:
     exit(0)
+# print(f"list {armr_d}")
+pdf_filename = f"m_{mine_name}_report" + '.pdf'
+doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
+
+# Define styles
+styles = getSampleStyleSheet()
+title_style = styles["Title"]
+normal_style = styles["Normal"]
+
+# Define content
+content = [
+    Paragraph("Mine Stability Report", title_style),
+    Paragraph(f"Recommendations for {mine_name}, {owner}, {location}", title_style),
+    Spacer(1, 12),
+    Paragraph("<b>ORE Information</b>", normal_style),
+    Paragraph(f"Mines Type : <b>{armr_d[9]}:{ore}</b>"),
+    Paragraph("-----------------------------------------------------------------------------------"),
+    Paragraph(f"Layer Thickness Rating : <b>{ltr_r[0]}</b>"),
+    Paragraph(f"Structural Rating : <b>{struct_rating_r[0]}</b>"),
+    Paragraph(f"Slake Durability Rating : <b>{sdr_r[0]}</b>"),
+    Paragraph(f"Rock Strength Rating : <b>{rsr_r[0]}</b>"),
+    Paragraph(f"Ground Water Rating : <b>{gsr_r[0]}</b>"),
+    Spacer(1, 6),
+    Paragraph("<b>Roof Information</b>", normal_style),
+    Paragraph("-----------------------------------------------------------------------------------"),
+    Paragraph(f"Layer Thickness Rating : <b>{ltr_r[1]}</b>"),
+    Paragraph(f"Structural Rating : <b>{struct_rating_r[1]}</b>"),
+    Paragraph(f"Slake Durability Rating : <b>{sdr_r[1]}</b>"),
+    Paragraph(f"Rock Strength Rating : <b>{rsr_r[1]}</b>"),
+    Paragraph(f"Ground Water Rating : <b>{gsr_r[1]}</b>"),
+    Paragraph("<b>Important</b>"),
+    Paragraph("-----------------------------------------------------------------------------------"),
+    Paragraph(f"OverLying Strata of ORE : <b> {t1} m</b> | Intermediate Roof Strata : <b> {t2} m</b>"),
+    Paragraph(f"Mean Density : <b>{mean_density} t/m3</b>"),
+    Paragraph(f"COMBINED RMR : <b>{crmr:.2f}</b>"),
+    Paragraph("Adjusted RMR After Calculating Depth [<b>{} m</b>] : <b>{:.2f}</b>".format(armr_d[0], armr_d[1])),
+    Paragraph("Adjusted RMR After Calculating Lateral Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[2], armr_d[3])),
+    Paragraph("Adjusted RMR After Calculating Induced Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[4], armr_d[5])),
+    Paragraph("Adjusted RMR After Calculating Method of Mining [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[6], armr_d[7])),
+    Paragraph("Adjusted RMR After Calculating Gallery Width [<b>{}</b>] : <b>{:.2f}</b>".format(t3, armr_d[8])),
+    Paragraph(f'Final RMR of Mine:<b> {armr:.2f}</b>'),
+    Paragraph(f'Remarks : <b>{rmr_classification} </b>', normal_style),
+    Paragraph(f"Roof Support Provided in Gallery : <b>{armr_d[10]}</b>"),
+    Paragraph("Factor of Safety at Gallery is <b>{:.2f}</b>".format(fos_g), normal_style),
+    Paragraph("Number of Bolts Required At Gallery is <b>{}</b>".format(b_g), normal_style),
+    Paragraph('Spacing Between Bolts in Gallery is <b>{} m</b>'.format(format(Bolts_spacing_Gallery, '0.2f')), normal_style),
+    Paragraph(f"Roof Support Provided at Junction : <b>{armr_d[11]}</b>"),
+    Paragraph("Factor of Safety at Junction is <b>{:.2f}</b>".format(fos_j), normal_style),
+    Paragraph("Number of Bolts Required At Junction is <b>{}X{} is {}</b>".format(b, b, pow(b, 2)), normal_style),
+    Paragraph('Spacing Between Bolts in Junction : <b>{} m</b>'.format(format(Bolts_spacing_Junction, '0.2f')), normal_style),
+    Paragraph("-----------------------------------------------------------------------------------"),
+    Spacer(1, 14),
+    Paragraph(f"<b>Report Generated @: {datetime.datetime.now()}</b>", normal_style),
+
+]
+doc.build(content)
+print(f"PDF report saved as {pdf_filename}")

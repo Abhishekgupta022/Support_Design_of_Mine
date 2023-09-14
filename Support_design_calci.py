@@ -1,7 +1,8 @@
 from reportlab.lib.pagesizes import letter
-# from reportlab.lib import colors
+
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
+
 import datetime
 print("--------*******--------********-------------**********------------*******---------")
 mine_name = input("Enter Mine Name: ")
@@ -637,9 +638,9 @@ if support_design == 1:
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
                 print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, '0.2f')))
                 fos_g = support_load_provided / Rock_load_Gallery
-                while not (1.6 <= fos_g <= 2.0):
+                while not (1.45 <= fos_g <= 2.0):
                     # b =  int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Gallery)))
-                    if fos_g <= 1.6:
+                    if fos_g <= 1.45:
                         b_g: int = int(input("Enter Number of Bolts Greater than {}:  ".format(no_of_Bolts_Gallery)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
@@ -655,7 +656,7 @@ if support_design == 1:
                         print("Current FOS is {}".format(format(fos_g, '0.2f')))
                         print("Your Input: {}".format(b_g))
                         print("Decrease Number of Bolts than {}".format(b_g))
-                    elif fos_g < 1.6:
+                    elif fos_g < 1.45:
                         print("Current FOS is {}".format(format(fos_g, '0.2f')))
                         print("Your Input: {}".format(b_g))
                         print("Increase Number of Bolts than {} ".format(b_g))
@@ -675,9 +676,8 @@ if support_design == 1:
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
                 print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, '0.2f')))
                 fos_g = support_load_provided / Rock_load_Gallery
-                while not (1.6 <= fos_g <= 2.0):
-                    # b =  int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Gallery)))
-                    if fos_g <= 1.6:
+                while not (1.45 <= fos_g <= 2.0):                    
+                    if fos_g <= 1.45:
                         b_g = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Gallery)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
@@ -693,7 +693,7 @@ if support_design == 1:
                         print("Current FOS is {}".format(format(fos_g, '0.2f')))
                         print("Your Input: {}".format(b_g))
                         print("Decrease Number of Bolts than {}".format(b_g))
-                    elif fos_g < 1.6:
+                    elif fos_g < 1.45:
                         print("Current FOS is {}".format(format(fos_g, '0.2f')))
                         print("Increase Number of Bolts than {}".format(b_g))
                 print("Factor of Safety is {}".format(format(fos_g, '0.2f')))
@@ -711,9 +711,9 @@ if support_design == 1:
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
                 print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, '0.2f')))
                 fos_g = support_load_provided / Rock_load_Gallery
-                while not (1.6 <= fos_g <= 2.0):
+                while not (1.45 <= fos_g <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Gallery)))
-                    if fos_g <= 1.6:
+                    if fos_g <= 1.45:
                         b_g = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Gallery)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
@@ -728,7 +728,7 @@ if support_design == 1:
                     if fos_g > 2:
                         print("Current FOS is {}".format(format(fos_g, '0.2f')))
                         print("Decrease Number of Bolts than {}".format(b_g))
-                    elif fos_g < 1.6:
+                    elif fos_g < 1.45:
                         print("Current FOS is {}".format(format(fos_g, '0.2f')))
                         print("Increase Number of Bolts than {}".format(b_g))
                 print("Factor of Safety at Gallery is {}".format(format(fos_g, '0.2f')))
@@ -739,7 +739,6 @@ if support_design == 1:
             break
         except ValueError:
             print("Invalid Input")
-
 
 else:
     exit(0)
@@ -770,9 +769,9 @@ if support_j == 1:
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
                 print("Rock Load in Junction is {}t/m2".format(format(Rock_load_Junction, '0.2f')))
                 fos_j = support_load_provided / Rock_load_Junction
-                while not (1.6 <= fos_j <= 2.0):
+                while not (1.45 <= fos_j <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Junction_row)))
-                    if fos_j <= 1.6:
+                    if fos_j <= 1.45:
                         b = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Junction_row)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
@@ -787,7 +786,7 @@ if support_j == 1:
                     if fos_j > 2:
                         print("Current FOS is {}".format(format(fos_j, '0.2f')))
                         print("Decrease Number of Bolts than {}".format(b))
-                    elif fos_j < 1.6:
+                    elif fos_j < 1.45:
                         print("Current FOS is {}".format(format(fos_j, '0.2f')))
                         print("Increase Number of Bolts than {} ".format(b))
                 print("Factor of Safety is {}".format(format(fos_j, '0.2f')))
@@ -809,9 +808,8 @@ if support_j == 1:
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
                 print("Rock Load in Junction is {}t/m2".format(format(Rock_load_Junction, '0.2f')))
                 fos_j = support_load_provided / Rock_load_Junction
-                while not (1.6 <= fos_j <= 2.0):
-                    # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Junction_row)))
-                    if fos_j <= 1.6:
+                while not (1.45 <= fos_j <= 2.0):                    
+                    if fos_j <= 1.45:
                         b = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Junction_row)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
@@ -826,7 +824,7 @@ if support_j == 1:
                     if fos_j > 2:
                         print("Current FOS is {}".format(format(fos_j, '0.2f')))
                         print("Decrease Number of Bolts than {} ".format(b))
-                    elif fos_j < 1.6:
+                    elif fos_j < 1.45:
                         print("Current FOS is {}".format(format(fos_j, '0.2f')))
                         print("Increase Number of Bolts than {}".format(b))
                 print("Factor of Safety is {}".format(format(fos_j, '0.2f')))
@@ -849,9 +847,9 @@ if support_j == 1:
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
                 print("Rock Load in Junction is {}t/m2".format(format(Rock_load_Junction, '0.2f')))
                 fos_j = support_load_provided / Rock_load_Junction
-                while not (1.6 <= fos_j <= 2.0):
+                while not (1.45 <= fos_j <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Junction_row)))
-                    if fos_j <= 1.6:
+                    if fos_j <= 1.45:
                         b = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Junction_row)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
@@ -867,7 +865,7 @@ if support_j == 1:
                         print("Current FOS is {}".format(format(fos_j, '0.2f')))
                         print("Decrease Number of Bolts than {} ".format(b))
 
-                    elif fos_j < 1.6:
+                    elif fos_j < 1.45:
                         print("Current FOS is {}".format(format(fos_j, '0.2f')))
                         print("Increase Number of Bolts than {}".format(b))
                 print("Factor of Safety at junction is {}".format(format(fos_j, '0.2f')))
@@ -886,7 +884,7 @@ if support_j == 1:
     print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 else:
     exit(0)
-# print(f"list {armr_d}")
+
 pdf_filename = f"m_{mine_name}_report" + '.pdf'
 doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
 
@@ -894,6 +892,7 @@ doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
 styles = getSampleStyleSheet()
 title_style = styles["Title"]
 normal_style = styles["Normal"]
+
 
 # Define content
 content = [
@@ -921,11 +920,13 @@ content = [
     Paragraph(f"OverLying Strata of ORE : <b> {t1} m</b> | Intermediate Roof Strata : <b> {t2} m</b>"),
     Paragraph(f"Mean Density : <b>{mean_density} t/m3</b>"),
     Paragraph(f"COMBINED RMR : <b>{crmr:.2f}</b>"),
-    Paragraph("Adjusted RMR After Calculating Depth [<b>{} m</b>] : <b>{:.2f}</b>".format(armr_d[0], armr_d[1])),
-    Paragraph("Adjusted RMR After Calculating Lateral Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[2], armr_d[3])),
-    Paragraph("Adjusted RMR After Calculating Induced Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[4], armr_d[5])),
-    Paragraph("Adjusted RMR After Calculating Mining Method [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[6], armr_d[7])),
-    Paragraph("Adjusted RMR After Calculating Gallery Width [<b>{}</b>] : <b>{:.2f}</b>".format(t3, armr_d[8])),
+    Paragraph("Adjusted RMR After Calculating"),
+    Paragraph("-----------------------------------------------------------------------------------"),
+    Paragraph("1. Depth [<b>{} m</b>] : <b>{:.2f}</b>".format(armr_d[0], armr_d[1])),
+    Paragraph("2. Lateral Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[2], armr_d[3])),
+    Paragraph("3. Induced Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[4], armr_d[5])),
+    Paragraph("4. Mining Method [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[6], armr_d[7])),
+    Paragraph("5. Gallery Width [<b>{} m</b>] : <b>{:.2f}</b>".format(t3, armr_d[8])),
     Paragraph(f'Final RMR of Mine:<b> {armr:.2f}</b>'),
     Paragraph(f'Remarks : <b>{rmr_classification} </b>', normal_style),
     Paragraph("Suggestion Based Upon Observation of Mine", normal_style),
@@ -943,5 +944,7 @@ content = [
     Paragraph(f"<b>Report Generated @: {datetime.datetime.now()}</b>", normal_style),
 
 ]
+
 doc.build(content)
+
 print(f"PDF report saved as {pdf_filename}")

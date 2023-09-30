@@ -8,9 +8,22 @@ print("--------*******--------********-------------**********------------*******
 mine_name = input("Enter Mine Name: ")
 location = input("Location of Mine: ")
 owner = input("Owner of Mine: ")
+options = ['COAL', 'METAL']
+for index, option in enumerate(options, start=1):
+    print(f"Press {index} for {option}")
+
+while True:
+    try:
+        tm = int(input("Enter Respective Mining Types: "))
+        if 1 <= tm <= len(options):
+            selected_option = options[tm - 1]
+            print(f"You selected: {selected_option} Mine")
+            break  # Exit the loop after a valid selection
+        else:
+            print("Enter a valid mining type (1 or 2)")
+    except ValueError:
+        print("Input ERROR: Please enter a number")
 ore = input("Enter Ore Types: ")
-
-
 ltr = struct_rating = rsr = b = b_g = sdr = gsr = Bolts_spacing_Junction = Bolts_spacing_Gallery = 0
 rmr = []
 ltr_r = []
@@ -23,6 +36,10 @@ fos_g = fos_j = Rock_load_Gallery = Rock_load_Junction = 0
 
 i = 0
 while i < 2:
+    if i == 0:
+        print("----------------*---ENTER DATA OF ORE---*------------")
+    elif i == 1:
+        print("----------*---ENTER DATA OF OVERBURDEN---*-----------")
 
     while True:
         while True:
@@ -31,7 +48,7 @@ while i < 2:
                 if 0 <= float(lt) <= 100:
                     break
                 else:
-                    print("Enter the LAYER THICKNESS(in CM)[0-100]")
+                    print("Invalid Input Enter again!!")
                     continue
             except ValueError:
                 print("Input Error")
@@ -145,7 +162,7 @@ while i < 2:
                 if 0 <= int(sti) <= 16:
                     break
                 else:
-                    print("Enter your STRUCTURAL Indices[0-16]: ")
+                    print("Invalid Input Enter again!!")
                     continue
             except ValueError:
                 print("Invalid Input")
@@ -211,13 +228,13 @@ while i < 2:
             print("Invalid Input")
     print("--------*******--------********-------------**********------------*******---------")
     while True:
-        while True:  
+        while True:
             try:
                 sld = float(input("Enter your SLAKE DURABILITY(I) index % [0-100]:  "))
                 if 0<= float(sld) <=100:
                     break
                 else:
-                    print("Enter your SLAKE DURABILITY(I) index % [0-100]:  ")
+                    print("Invalid Input Enter again!!")
                     continue
             except ValueError:
                 print("Invalid Input")
@@ -302,7 +319,7 @@ while i < 2:
                 if float(rst) >=0:
                     break
                 else:
-                    print("Enter your Rock STRENGTH (kg/cm²):  ")
+                    print("Invalid Input Enter again!!")
                     continue
             except ValueError:
                 print("Invalid Input")
@@ -369,12 +386,12 @@ while i < 2:
     while True:
         while True:
             try:
-                print("Press 0 for dry ground surface")        
+                print("Press 0 for dry ground surface")
                 grs = float(input("Enter your GROUND SEEPAGE (ml/min):  "))
                 if float(grs) >= 0:
                     break
                 else:
-                    print("Enter your GROUND SEEPAGE (ml/min) Again :  ")
+                    print("Invalid Input Enter again!!")
                     continue
             except ValueError:
                 print("Invalid Input")
@@ -432,16 +449,18 @@ t2 = float(input("Enter the intermediate roof strata of shale/sandstone/else: ")
 while True:
     t3 = float(input("Enter the Gallery Span Width (m): "))
     try:
-        if 6 >= t3 >= 4.8:
+        if 4.8 <= t3 <= 6:
             pass
         else:
-            print("You Entered Abrupt data for Gallery\nIt must be in [4.8-6]m as per Indian Guidelines")
+            print("Gallery Width must be in [4.8-6]m as per Indian Guidelines")
             continue
         break
     except ValueError:
         print("Invalid Input")
-
-crmr = ((rmr[0] * t1) + (rmr[1] * (t3 - t1))) / t3
+if t1 <= t3:
+    crmr = ((rmr[0] * t1) + (rmr[1] * (t3 - t1))) / t3
+else:
+    crmr = (rmr[0])
 print("Combined RMR is {}".format(format(crmr, '0.2f')))
 
 print("--------*******--------********-------------**********------------*******---------")
@@ -511,10 +530,12 @@ print("ARMR after including INDUCED STRESS is {}".format(format(armr, '0.2f')))
 armr_d.append(armr)
 print("--------*******--------********-------------**********------------*******---------")
 print("CONDITIONS FOR METHOD OF WORKING")
-options =['MECHANISED WORKING OR CONTINUOUS MINER',
-          'UNDERCUT AND BLASTING',
-          'BLASTING OFF THE SOLID',
-          'if you dont know data']
+options =[
+    'MECHANISED WORKING OR CONTINUOUS MINER',
+    'UNDERCUT AND BLASTING',
+    'BLASTING OFF THE SOLID',
+    'if you dont know data'
+]
 for index, option in enumerate(options, start=1):
     print(f"Press {index} for {option}")
 while True:
@@ -574,17 +595,13 @@ else:
 print("--------*******--------********-------------**********------------*******---------")
 print("CALCULATING Rock LOAD....")
 
-options = ['COAL', 'METAL']
-for index, option in enumerate(options, start=1):
-    print(f"Press {index} for {option}")
-
 while True:
 
-    Rock_l = int(input("Enter the respective key for the Rock load: "))
+    Rock_l = tm
     mean_density = float(input("Enter the mean density (t/m^3): "))
     try:
         if Rock_l == 1:
-            print("You selected the Coal mine")
+            print("You Already selected the \"COAL MINE\"")
             armr_d.append('Coal Mine')
             # Gallery_span = float(input("Enter the Gallery span: "))
             print('Gallery Span Already Entered is {} m'.format(t3))
@@ -597,7 +614,7 @@ while True:
             print("Rock load at Junction {} t/m2:".format(format(Rock_load_Junction, '.2f')))
             print("Good luck!")
         elif Rock_l == 2:
-            print("You selected the METAL MINE")
+            print("You Already selected the \"METAL MINE\"")
             armr_d.append('Metal Mine')
             # Gallery_span = float(input("Enter the Gallery span: "))
             print('Gallery Span Already entered is {} m'.format(t3))
@@ -618,7 +635,6 @@ print("Press other than 1 for exit ")
 
 
 support_design = float(input('Enter the value carefully:  '))
-
 if support_design == 1:
     while True:
         try:
@@ -630,6 +646,7 @@ if support_design == 1:
                 armr_d.append("Cement Capsule 6 tonne")
                 no_of_Bolts_Gallery = (t3 * Rock_load_Gallery) / 6
                 no_of_Bolts_Gallery = round(no_of_Bolts_Gallery)
+                b_g = no_of_Bolts_Gallery
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
                 print("Calculating Spacings....")
                 Bolts_spacing_Gallery = t3 / no_of_Bolts_Gallery
@@ -641,10 +658,10 @@ if support_design == 1:
                 while not (1.45 <= fos_g <= 2.0):
                     # b =  int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Gallery)))
                     if fos_g <= 1.45:
-                        b_g: int = int(input("Enter Number of Bolts Greater than {}:  ".format(no_of_Bolts_Gallery)))
+                        b_g: int = int(input("Enter Number of Bolts Greater than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
-                        b_g: int = int(input("Enter Number of Bolts Less than {}:  ".format(no_of_Bolts_Gallery)))
+                        b_g: int = int(input("Enter Number of Bolts Less than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     Bolts_spacing_Gallery = t3 / b_g
                     print('Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Gallery, '0.2f')))
@@ -663,11 +680,14 @@ if support_design == 1:
 
                 print("Factor of Safety is {}".format(format(fos_g, '0.2f')))
                 print("Number of Bolts Required At Gallery is {}".format(b_g))
+                Bolts_spacing_Gallery = t3 / b_g
+                print('New Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Gallery, '0.2f')))
 
             elif support == 2:
                 armr_d.append('Resin Bolt 10 tonne')
                 no_of_Bolts_Gallery = (t3 * Rock_load_Gallery) / 10
                 no_of_Bolts_Gallery = round(no_of_Bolts_Gallery)
+                b_g = no_of_Bolts_Gallery
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
                 print("Calculating Spacings....")
                 Bolts_spacing_Gallery = t3 / no_of_Bolts_Gallery
@@ -676,12 +696,12 @@ if support_design == 1:
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
                 print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, '0.2f')))
                 fos_g = support_load_provided / Rock_load_Gallery
-                while not (1.45 <= fos_g <= 2.0):                    
+                while not (1.45 <= fos_g <= 2.0):
                     if fos_g <= 1.45:
-                        b_g = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Gallery)))
+                        b_g = int(input("Enter Number of Bolts greater than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
-                        b_g = int(input("Enter Number of Bolts less than {}:  ".format(no_of_Bolts_Gallery)))
+                        b_g = int(input("Enter Number of Bolts less than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     Bolts_spacing_Gallery = t3 / b_g
                     print('Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Gallery, '0.2f')))
@@ -698,11 +718,14 @@ if support_design == 1:
                         print("Increase Number of Bolts than {}".format(b_g))
                 print("Factor of Safety is {}".format(format(fos_g, '0.2f')))
                 print("Number of Bolts Required At Gallery is {}".format(b_g))
+                Bolts_spacing_Gallery = t3 / b_g
+                print('New Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Gallery, '0.2f')))
             elif support == 3:
                 a = float(input("Enter the loading capacity in tonne:  "))
                 armr_d.append(f"Others Support {a} tonne")
                 no_of_Bolts_Gallery = (t3 * Rock_load_Gallery) / a
                 no_of_Bolts_Gallery = round(no_of_Bolts_Gallery)
+                b_g = no_of_Bolts_Gallery
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
                 print("Calculating Spacings....")
                 Bolts_spacing_Gallery = t3 / no_of_Bolts_Gallery
@@ -714,10 +737,10 @@ if support_design == 1:
                 while not (1.45 <= fos_g <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Gallery)))
                     if fos_g <= 1.45:
-                        b_g = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Gallery)))
+                        b_g = int(input("Enter Number of Bolts greater than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
-                        b_g = int(input("Enter Number of Bolts less than {}:  ".format(no_of_Bolts_Gallery)))
+                        b_g = int(input("Enter Number of Bolts less than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     Bolts_spacing_Gallery = t3 / b_g
                     print('Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Gallery, '0.2f')))
@@ -733,6 +756,9 @@ if support_design == 1:
                         print("Increase Number of Bolts than {}".format(b_g))
                 print("Factor of Safety at Gallery is {}".format(format(fos_g, '0.2f')))
                 print("Number of Bolts Required At Gallery is {}".format(b_g))
+                Bolts_spacing_Gallery = t3 / b_g
+                print('New Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Gallery, '0.2f')))
+
             else:
                 print("Enter Valid Digit Again!! ")
                 continue
@@ -760,10 +786,11 @@ if support_j == 1:
                 no_of_Bolts_Junction = round(no_of_Bolts_Junction)
                 no_of_Bolts_Junction = pow(no_of_Bolts_Junction, 2)
                 no_of_Bolts_Junction_row = pow(no_of_Bolts_Junction, 0.5)
+                b = no_of_Bolts_Junction_row
                 print("Number of Bolts at Junction is {}".format(no_of_Bolts_Junction))
                 print("Number of Bolts in a row at Junction is {}".format(no_of_Bolts_Junction_row))
                 print("Calculating Spacings....")
-                Bolts_spacing_Junction = t3 / no_of_Bolts_Junction_row
+                Bolts_spacing_Junction = t3 / no_of_Bolts_Junction
                 print('Spacing Between Bolts in Junction is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
                 support_load_provided = (no_of_Bolts_Junction * 6) / (t3 * t3)
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
@@ -772,10 +799,10 @@ if support_j == 1:
                 while not (1.45 <= fos_j <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Junction_row)))
                     if fos_j <= 1.45:
-                        b = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Junction_row)))
+                        b = int(input("Enter Number of Bolts greater than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
-                        b = int(input("Enter Number of Bolts less than {}:  ".format(no_of_Bolts_Junction_row)))
+                        b = int(input("Enter Number of Bolts less than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     Bolts_spacing_Junction = t3 / b
                     print('Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
@@ -792,6 +819,9 @@ if support_j == 1:
                 print("Factor of Safety is {}".format(format(fos_j, '0.2f')))
                 print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 
+                Bolts_spacing_Junction = t3 / b
+                print('New Spacing Between Bolts in Junction is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
+
             elif support_ == 2:
                 armr_d.append("Resin Bolt 10 tonne")
                 no_of_Bolts_Junction = (t3 * t3 * Rock_load_Junction) / 10
@@ -799,21 +829,22 @@ if support_j == 1:
                 no_of_Bolts_Junction = round(no_of_Bolts_Junction)
                 no_of_Bolts_Junction = pow(no_of_Bolts_Junction, 2)
                 no_of_Bolts_Junction_row = pow(no_of_Bolts_Junction, 0.5)
+                b = no_of_Bolts_Junction_row
                 print("Number of Bolts at Junction is {}".format(no_of_Bolts_Junction))
                 print("Number of Bolts in a row at Junction is {}".format(no_of_Bolts_Junction_row))
                 print("Calculating Spacings....")
-                Bolts_spacing_Junction = t3 / no_of_Bolts_Junction_row
+                Bolts_spacing_Junction = t3 / no_of_Bolts_Junction
                 print('Spacing Between Bolts in Junction is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
                 support_load_provided = (no_of_Bolts_Junction * 10) / (t3 * t3)
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
                 print("Rock Load in Junction is {}t/m2".format(format(Rock_load_Junction, '0.2f')))
                 fos_j = support_load_provided / Rock_load_Junction
-                while not (1.45 <= fos_j <= 2.0):                    
+                while not (1.45 <= fos_j <= 2.0):
                     if fos_j <= 1.45:
-                        b = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Junction_row)))
+                        b = int(input("Enter Number of Bolts greater than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
-                        b = int(input("Enter Number of Bolts less than {}:  ".format(no_of_Bolts_Junction_row)))
+                        b = int(input("Enter Number of Bolts less than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     Bolts_spacing_Junction = t3 / b
                     print('Spacing Between Bolts in Gallery is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
@@ -830,6 +861,9 @@ if support_j == 1:
                 print("Factor of Safety is {}".format(format(fos_j, '0.2f')))
                 print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 
+                Bolts_spacing_Junction = t3 / b
+                print('New Spacing Between Bolts in Junction is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
+
             elif support_ == 3:
                 a = float(input("Enter the loading capacity in tonne:  "))
                 armr_d.append(f'Others Support {a} tonne')
@@ -838,10 +872,11 @@ if support_j == 1:
                 no_of_Bolts_Junction = round(no_of_Bolts_Junction)
                 no_of_Bolts_Junction = pow(no_of_Bolts_Junction, 2)
                 no_of_Bolts_Junction_row = pow(no_of_Bolts_Junction, 0.5)
+                b = no_of_Bolts_Junction_row
                 print("Number of Bolts at Junction is {}".format(no_of_Bolts_Junction))
                 print("Number of Bolts in a row at Junction is {}".format(no_of_Bolts_Junction_row))
                 print("Calculating Spacings....")
-                Bolts_spacing_Junction = t3 / no_of_Bolts_Junction_row
+                Bolts_spacing_Junction = t3 / no_of_Bolts_Junction
                 print('Spacing Between Bolts in Junction is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
                 support_load_provided = (no_of_Bolts_Junction * a) / (t3 * t3)
                 print("Support Load Provided is {}t/m2".format(format(support_load_provided, '0.2f')))
@@ -850,10 +885,10 @@ if support_j == 1:
                 while not (1.45 <= fos_j <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Junction_row)))
                     if fos_j <= 1.45:
-                        b = int(input("Enter Number of Bolts greater than {}:  ".format(no_of_Bolts_Junction_row)))
+                        b = int(input("Enter Number of Bolts greater than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
-                        b = int(input("Enter Number of Bolts less than {}:  ".format(no_of_Bolts_Junction_row)))
+                        b = int(input("Enter Number of Bolts less than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     Bolts_spacing_Junction = t3 / b
                     print('Spacing Between Bolts in Junction is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
@@ -871,12 +906,16 @@ if support_j == 1:
                 print("Factor of Safety at junction is {}".format(format(fos_j, '0.2f')))
                 print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 
+                Bolts_spacing_Junction = t3 / b
+                print('New Spacing Between Bolts in Junction is {} m'.format(format(Bolts_spacing_Junction, '0.2f')))
+
             else:
                 print("Enter the Valid Input Again!!")
                 continue
             break
         except ValueError:
             print("Invalid Input")
+
     print("***************---HENCE---WE--GOT---****************")
     print("Factor of Safety at Gallery is {}".format(format(fos_g, '0.2f')))
     print("Number of Bolts Required At Gallery is {}".format(b_g))

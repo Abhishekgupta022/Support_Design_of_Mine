@@ -5,9 +5,18 @@ from reportlab.lib.styles import getSampleStyleSheet
 
 import datetime
 print("--------*******--------********-------------**********------------*******---------")
-mine_name = input("Enter Mine Name: ")
-location = input("Location of Mine: ")
-owner = input("Owner of Mine: ")
+ltr = struct_rating = rsr = b = b_g = sdr = gsr = Bolts_spacing_Junction = Bolts_spacing_Gallery = 0
+rmr = []
+ltr_r = []
+struct_rating_r = []
+rsr_r = []
+sdr_r = []
+gsr_r = []
+armr_d = []
+fos_g = fos_j = Rock_load_Gallery = Rock_load_Junction = 0
+mine_name = input("Enter Mine Name: ").title()
+location = input("Location of Mine: ").title()
+owner = input("Owner of Mine: ").upper()
 options = ['COAL', 'METAL']
 for index, option in enumerate(options, start=1):
     print(f"Press {index} for {option}")
@@ -23,17 +32,7 @@ while True:
             print("Enter a valid mining type (1 or 2)")
     except ValueError:
         print("Input ERROR: Please enter a number")
-ore = input("Enter Ore Types: ")
-ltr = struct_rating = rsr = b = b_g = sdr = gsr = Bolts_spacing_Junction = Bolts_spacing_Gallery = 0
-rmr = []
-ltr_r = []
-struct_rating_r = []
-rsr_r = []
-sdr_r = []
-gsr_r = []
-armr_d = []
-fos_g = fos_j = Rock_load_Gallery = Rock_load_Junction = 0
-
+ore = input("Enter Ore Types: ").title()
 i = 0
 while i < 2:
     if i == 0:
@@ -583,7 +582,7 @@ elif 40 < armr <= 60:
     rmr_classification = "FAIR STRATA"
 elif 20 < armr <= 40:
     print("Final RMR : {}".format(format(armr, '0.2f')))
-    print("POOR STRATA")
+    rmr_classification = "POOR STRATA"
 elif 0 < armr <= 20:
     print("Final RMR Less than 20")
     rmr_classification = "VERY POOR STRATA"

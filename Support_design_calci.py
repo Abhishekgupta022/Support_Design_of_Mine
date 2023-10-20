@@ -508,15 +508,11 @@ while i < 2:
                 )
             elif 0 < float(grs) <= 10:
                 gsr = 9
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif float(grs) == 0:
                 gsr = 10
                 print("Wow dry ground seepage\ngreat")
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             else:
                 print("GRS Input cant be Negative \nEnter the Value again!!")
                 continue
@@ -524,16 +520,12 @@ while i < 2:
             break
         except ValueError:
             print("Invalid Input")
-    print(
-        "--------*******--------********-------------**********------------*******---------"
-    )
+    print("--------*******--------********-------------**********------------*******---------")
     rmr.append(ltr + struct_rating + sdr + rsr + gsr)
     i += 1
 print("RMR of Coal/Metal is", rmr[0])
 print("Rmr of Shale/Sandstone is", rmr[1])
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 print("We have to find the COMBINED RMR!! ")
 t1 = float(input("Enter the overlying strata of Coal or Metal mine(m): "))
 t2 = float(input("Enter the intermediate roof strata of shale/sandstone/else: "))
@@ -554,9 +546,7 @@ else:
     crmr = rmr[0]
 print("Combined RMR is {}".format(format(crmr, "0.2f")))
 
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 print("Now we have to Calculate Adjusted RMR")
 depth = float(input("Enter the depth(in m):  "))
 armr_d.append(depth)
@@ -570,9 +560,7 @@ else:
     armr = crmr * 0.7
 print("ARMR AFTER DEPTH calculation is {} ".format(format(armr, "0.2f")))
 armr_d.append(armr)
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 
 print("CONDITIONS FOR LATERAL STRESS!!!!")
 options = ["SMALL STRESS", "MEDIUM STRESS", "HIGH STRESS", "If You Don't Know Data"]
@@ -593,9 +581,7 @@ while True:
         print("Invalid Input")
 print("ARMR after including lateral stress is {}".format(format(armr, "0.2f")))
 armr_d.append(armr)
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 print("CONDITION FOR INDUCED STRESS!!!")
 options = [
     "NO ADJACENT WORKING IN THE SEAM",
@@ -625,9 +611,7 @@ while True:
 
 print("ARMR after including INDUCED STRESS is {}".format(format(armr, "0.2f")))
 armr_d.append(armr)
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 print("CONDITIONS FOR METHOD OF WORKING")
 options = [
     "MECHANISED WORKING OR CONTINUOUS MINER",
@@ -654,9 +638,7 @@ while True:
 
 print("ARMR after including METHOD OF EXCAVATION is {}".format(format(armr, "0.2f")))
 armr_d.append(armr)
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 Gallery_span = t3 * 1
 print("Gallery Span Already Entered is {} m".format(t3))
 if Gallery_span < 4.8:
@@ -668,9 +650,7 @@ else:
 print("ARMR after including Gallery calculation is {}".format(format(armr, "0.2f")))
 armr_d.append(armr)
 # print(f"Final RMR : {armr:.2f}")
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 rmr_classification = ""
 if 90 < armr <= 100.0:
     print("Final RMR : {}".format(format(armr, "0.2f")))
@@ -695,9 +675,7 @@ else:
     print("VALUE ABSURD")
     print("RMR CAN'T BE GREATER THAN 100")
     print("MEASURE RMR INDICES AGAIN")
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 print("CALCULATING Rock LOAD....")
 
 while True:
@@ -714,15 +692,9 @@ while True:
             print("Rock LOAD HEIGHT is {} m".format(format(r_load_height, ".2f")))
             Rock_load_Gallery = mean_density * r_load_height
             print("Rock load based on Indian RMR")
-            print(
-                "Rock load at Gallery {} t/m2:".format(format(Rock_load_Gallery, ".2f"))
-            )
+            print("Rock load at Gallery {} t/m2:".format(format(Rock_load_Gallery, ".2f")))
             Rock_load_Junction = mean_density * r_load_height * 1.414
-            print(
-                "Rock load at Junction {} t/m2:".format(
-                    format(Rock_load_Junction, ".2f")
-                )
-            )
+            print("Rock load at Junction {} t/m2:".format(format(Rock_load_Junction, ".2f")))
             print("Good luck!")
         elif Rock_l == 2:
             print('You Already selected the "METAL MINE"')
@@ -730,17 +702,9 @@ while True:
             # Gallery_span = float(input("Enter the Gallery span: "))
             print("Gallery Span Already entered is {} m".format(t3))
             Rock_load_Gallery = ((100 - armr) / armr) * t3 * mean_density
-            print(
-                "Rock load at Gallery is {} t/m2".format(
-                    format(Rock_load_Gallery, ".2f")
-                )
-            )
+            print("Rock load at Gallery is {} t/m2".format(format(Rock_load_Gallery, ".2f")))
             Rock_load_Junction = Rock_load_Gallery * 1.414
-            print(
-                "Rock load at Junction is {} t/m2".format(
-                    format(Rock_load_Junction, ".2f")
-                )
-            )
+            print("Rock load at Junction is {} t/m2".format(format(Rock_load_Junction, ".2f")))
             print("All the best!")
         else:
             print("!!! WRONG KEY SELECTION\nInput Valid Key!!")
@@ -748,9 +712,7 @@ while True:
         break
     except ValueError:
         print("Invalid Input")
-print(
-    "--------*******--------********------SUPPORT DESIGN--------**********------------*******---------"
-)
+print("--------*******--------********------SUPPORT DESIGN--------**********------------*******---------")
 print("Press 1 for Support Design For Gallery")
 print("Press other than 1 for exit ")
 
@@ -761,9 +723,7 @@ if support_design == 1:
         try:
             print("Calculating Support Design...")
             print("Calculating Number of Bolts for Gallery")
-            print(
-                "Press 1 for Cement Capsule = 6 tonne\nPress 2 for Resin Bolt = 10 tonne\nPress 3 for your Input"
-            )
+            print("Press 1 for Cement Capsule = 6 tonne\nPress 2 for Resin Bolt = 10 tonne\nPress 3 for your Input")
             support = int(input("Enter Your Input Carefully: "))
             if support == 1:
                 armr_d.append("Cement Capsule 6 tonne")
@@ -773,56 +733,24 @@ if support_design == 1:
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
                 print("Calculating Spacings....")
                 Bolts_spacing_Gallery = t3 / no_of_Bolts_Gallery
-                print(
-                    "Spacing Between Bolts in Gallery is {} m".format(
-                        format(Bolts_spacing_Gallery, "0.2f")
-                    )
-                )
-                support_load_provided = (no_of_Bolts_Gallery * 6) / (
-                    t3 * Bolts_spacing_Gallery
-                )
-                print(
-                    "Support Load Provided is {}t/m2".format(
-                        format(support_load_provided, "0.2f")
-                    )
-                )
-                print(
-                    "Rock Load in Gallery is {}t/m2".format(
-                        format(Rock_load_Gallery, "0.2f")
-                    )
-                )
+                print("Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
+                support_load_provided = (no_of_Bolts_Gallery * 6) / (t3 * Bolts_spacing_Gallery)
+                print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, "0.2f")))
                 fos_g = support_load_provided / Rock_load_Gallery
                 while not (1.45 <= fos_g <= 2.0):
                     # b =  int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Gallery)))
                     if fos_g <= 1.45:
-                        b_g: int = int(
-                            input(
-                                "Enter Number of Bolts Greater than {}:  ".format(b_g)
-                            )
-                        )
+                        b_g: int = int(input("Enter Number of Bolts Greater than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
-                        b_g: int = int(
-                            input("Enter Number of Bolts Less than {}:  ".format(b_g))
-                        )
+                        b_g: int = int(input("Enter Number of Bolts Less than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     Bolts_spacing_Gallery = t3 / b_g
-                    print(
-                        "Spacing Between Bolts in Gallery is {} m".format(
-                            format(Bolts_spacing_Gallery, "0.2f")
-                        )
-                    )
+                    print("Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
                     support_load_provided = (b_g * 6) / (t3 * Bolts_spacing_Gallery)
-                    print(
-                        "Support Load Provided is {}t/m2".format(
-                            format(support_load_provided, "0.2f")
-                        )
-                    )
-                    print(
-                        "Rock Load in Gallery is {}t/m2".format(
-                            format(Rock_load_Gallery, "0.2f")
-                        )
-                    )
+                    print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                    print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, "0.2f")))
                     fos_g = support_load_provided / Rock_load_Gallery
                     if fos_g > 2:
                         print("Current FOS is {}".format(format(fos_g, "0.2f")))
@@ -836,11 +764,7 @@ if support_design == 1:
                 print("Factor of Safety is {}".format(format(fos_g, "0.2f")))
                 print("Number of Bolts Required At Gallery is {}".format(b_g))
                 Bolts_spacing_Gallery = t3 / b_g
-                print(
-                    "New Spacing Between Bolts in Gallery is {} m".format(
-                        format(Bolts_spacing_Gallery, "0.2f")
-                    )
-                )
+                print("New Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
 
             elif support == 2:
                 armr_d.append("Resin Bolt 10 tonne")
@@ -850,19 +774,9 @@ if support_design == 1:
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
                 print("Calculating Spacings....")
                 Bolts_spacing_Gallery = t3 / no_of_Bolts_Gallery
-                print(
-                    "Spacing Between Bolts in Gallery is {} m".format(
-                        format(Bolts_spacing_Gallery, "0.2f")
-                    )
-                )
-                support_load_provided = (no_of_Bolts_Gallery * 10) / (
-                    t3 * Bolts_spacing_Gallery
-                )
-                print(
-                    "Support Load Provided is {}t/m2".format(
-                        format(support_load_provided, "0.2f")
-                    )
-                )
+                print("Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
+                support_load_provided = (no_of_Bolts_Gallery * 10) / (t3 * Bolts_spacing_Gallery)
+                print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
                 print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, "0.2f")))
                 fos_g = support_load_provided / Rock_load_Gallery
                 while not (1.45 <= fos_g <= 2.0):

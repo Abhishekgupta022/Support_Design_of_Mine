@@ -863,42 +863,20 @@ if support_design == 1:
                         format(support_load_provided, "0.2f")
                     )
                 )
-                print(
-                    "Rock Load in Gallery is {}t/m2".format(
-                        format(Rock_load_Gallery, "0.2f")
-                    )
-                )
+                print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, "0.2f")))
                 fos_g = support_load_provided / Rock_load_Gallery
                 while not (1.45 <= fos_g <= 2.0):
                     if fos_g <= 1.45:
-                        b_g = int(
-                            input(
-                                "Enter Number of Bolts greater than {}:  ".format(b_g)
-                            )
-                        )
+                        b_g = int(input("Enter Number of Bolts greater than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
-                        b_g = int(
-                            input("Enter Number of Bolts less than {}:  ".format(b_g))
-                        )
+                        b_g = int(input("Enter Number of Bolts less than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     Bolts_spacing_Gallery = t3 / b_g
-                    print(
-                        "Spacing Between Bolts in Gallery is {} m".format(
-                            format(Bolts_spacing_Gallery, "0.2f")
-                        )
-                    )
+                    print("Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
                     support_load_provided = (b_g * 10) / (t3 * Bolts_spacing_Gallery)
-                    print(
-                        "Support Load Provided is {}t/m2".format(
-                            format(support_load_provided, "0.2f")
-                        )
-                    )
-                    print(
-                        "Rock Load in Gallery is {}t/m2".format(
-                            format(Rock_load_Gallery, "0.2f")
-                        )
-                    )
+                    print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                    print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, "0.2f")))
                     fos_g = support_load_provided / Rock_load_Gallery
                     if fos_g > 2:
                         print("Current FOS is {}".format(format(fos_g, "0.2f")))
@@ -910,11 +888,7 @@ if support_design == 1:
                 print("Factor of Safety is {}".format(format(fos_g, "0.2f")))
                 print("Number of Bolts Required At Gallery is {}".format(b_g))
                 Bolts_spacing_Gallery = t3 / b_g
-                print(
-                    "New Spacing Between Bolts in Gallery is {} m".format(
-                        format(Bolts_spacing_Gallery, "0.2f")
-                    )
-                )
+                print("New Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
             elif support == 3:
                 a = float(input("Enter the loading capacity in tonne:  "))
                 armr_d.append(f"Others Support {a} tonne")
@@ -924,56 +898,24 @@ if support_design == 1:
                 print("Number of Bolts is {}".format(no_of_Bolts_Gallery))
                 print("Calculating Spacings....")
                 Bolts_spacing_Gallery = t3 / no_of_Bolts_Gallery
-                print(
-                    "Spacing Between Bolts in Gallery is {} m".format(
-                        format(Bolts_spacing_Gallery, "0.2f")
-                    )
-                )
-                support_load_provided = (no_of_Bolts_Gallery * a) / (
-                    t3 * Bolts_spacing_Gallery
-                )
-                print(
-                    "Support Load Provided is {}t/m2".format(
-                        format(support_load_provided, "0.2f")
-                    )
-                )
-                print(
-                    "Rock Load in Gallery is {}t/m2".format(
-                        format(Rock_load_Gallery, "0.2f")
-                    )
-                )
+                print("Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
+                support_load_provided = (no_of_Bolts_Gallery * a) / (t3 * Bolts_spacing_Gallery)
+                print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, "0.2f")))
                 fos_g = support_load_provided / Rock_load_Gallery
                 while not (1.45 <= fos_g <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Gallery)))
                     if fos_g <= 1.45:
-                        b_g = int(
-                            input(
-                                "Enter Number of Bolts greater than {}:  ".format(b_g)
-                            )
-                        )
+                        b_g = int(input("Enter Number of Bolts greater than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     elif fos_g >= 2.0:
-                        b_g = int(
-                            input("Enter Number of Bolts less than {}:  ".format(b_g))
-                        )
+                        b_g = int(input("Enter Number of Bolts less than {}:  ".format(b_g)))
                         print("Your Input: {}".format(b_g))
                     Bolts_spacing_Gallery = t3 / b_g
-                    print(
-                        "Spacing Between Bolts in Gallery is {} m".format(
-                            format(Bolts_spacing_Gallery, "0.2f")
-                        )
-                    )
+                    print("Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
                     support_load_provided = (b_g * a) / (t3 * Bolts_spacing_Gallery)
-                    print(
-                        "Support Load Provided is {}t/m2".format(
-                            format(support_load_provided, "0.2f")
-                        )
-                    )
-                    print(
-                        "Rock Load in Gallery is {}t/m2".format(
-                            format(Rock_load_Gallery, "0.2f")
-                        )
-                    )
+                    print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                    print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Gallery, "0.2f")))
                     fos_g = support_load_provided / Rock_load_Gallery
                     if fos_g > 2:
                         print("Current FOS is {}".format(format(fos_g, "0.2f")))
@@ -984,11 +926,7 @@ if support_design == 1:
                 print("Factor of Safety at Gallery is {}".format(format(fos_g, "0.2f")))
                 print("Number of Bolts Required At Gallery is {}".format(b_g))
                 Bolts_spacing_Gallery = t3 / b_g
-                print(
-                    "New Spacing Between Bolts in Gallery is {} m".format(
-                        format(Bolts_spacing_Gallery, "0.2f")
-                    )
-                )
+                print("New Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Gallery, "0.2f")))
 
             else:
                 print("Enter Valid Digit Again!! ")
@@ -999,9 +937,7 @@ if support_design == 1:
 
 else:
     exit(0)
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
+print("--------*******--------********-------------**********------------*******---------")
 print("Press 1 For Calculating Support Design For Junction")
 print("Press Any other Key for Exit")
 support_j = int(input("Enter the key carefully:  "))
@@ -1009,9 +945,7 @@ if support_j == 1:
     while True:
         try:
             print("Calculating Support Design For Junction....")
-            print(
-                "Press 1 for Cement Capsule = 6 tonne\nPress 2 for Resin Bolt = 10 tonne\nPress 3 for your Input"
-            )
+            print("Press 1 for Cement Capsule = 6 tonne\nPress 2 for Resin Bolt = 10 tonne\nPress 3 for your Input")
 
             support_ = int(input("Enter Your Input Carefully: "))
             if support_ == 1:
@@ -1023,59 +957,27 @@ if support_j == 1:
                 no_of_Bolts_Junction_row = pow(no_of_Bolts_Junction, 0.5)
                 b = no_of_Bolts_Junction_row
                 print("Number of Bolts at Junction is {}".format(no_of_Bolts_Junction))
-                print(
-                    "Number of Bolts in a row at Junction is {}".format(
-                        no_of_Bolts_Junction_row
-                    )
-                )
+                print("Number of Bolts in a row at Junction is {}".format(no_of_Bolts_Junction_row))
                 print("Calculating Spacings....")
                 Bolts_spacing_Junction = t3 / no_of_Bolts_Junction
-                print(
-                    "Spacing Between Bolts in Junction is {} m".format(
-                        format(Bolts_spacing_Junction, "0.2f")
-                    )
-                )
+                print("Spacing Between Bolts in Junction is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
                 support_load_provided = (no_of_Bolts_Junction * 6) / (t3 * t3)
-                print(
-                    "Support Load Provided is {}t/m2".format(
-                        format(support_load_provided, "0.2f")
-                    )
-                )
-                print(
-                    "Rock Load in Junction is {}t/m2".format(
-                        format(Rock_load_Junction, "0.2f")
-                    )
-                )
+                print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                print("Rock Load in Junction is {}t/m2".format(format(Rock_load_Junction, "0.2f")))
                 fos_j = support_load_provided / Rock_load_Junction
                 while not (1.45 <= fos_j <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Junction_row)))
                     if fos_j <= 1.45:
-                        b = int(
-                            input("Enter Number of Bolts greater than {}:  ".format(b))
-                        )
+                        b = int(input("Enter Number of Bolts greater than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
-                        b = int(
-                            input("Enter Number of Bolts less than {}:  ".format(b))
-                        )
+                        b = int(input("Enter Number of Bolts less than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     Bolts_spacing_Junction = t3 / b
-                    print(
-                        "Spacing Between Bolts in Gallery is {} m".format(
-                            format(Bolts_spacing_Junction, "0.2f")
-                        )
-                    )
+                    print("Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
                     support_load_provided = (b * 6) / (t3 * Bolts_spacing_Junction)
-                    print(
-                        "Support Load Provided is {}t/m2".format(
-                            format(support_load_provided, "0.2f")
-                        )
-                    )
-                    print(
-                        "Rock Load in Gallery is {}t/m2".format(
-                            format(Rock_load_Junction, "0.2f")
-                        )
-                    )
+                    print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                    print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Junction, "0.2f")))
                     fos_j = support_load_provided / Rock_load_Junction
                     if fos_j > 2:
                         print("Current FOS is {}".format(format(fos_j, "0.2f")))
@@ -1084,18 +986,10 @@ if support_j == 1:
                         print("Current FOS is {}".format(format(fos_j, "0.2f")))
                         print("Increase Number of Bolts than {} ".format(b))
                 print("Factor of Safety is {}".format(format(fos_j, "0.2f")))
-                print(
-                    "Number of Bolts Required At Junction is {}X{} is {}".format(
-                        b, b, pow(b, 2)
-                    )
-                )
+                print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 
                 Bolts_spacing_Junction = t3 / b
-                print(
-                    "New Spacing Between Bolts in Junction is {} m".format(
-                        format(Bolts_spacing_Junction, "0.2f")
-                    )
-                )
+                print("New Spacing Between Bolts in Junction is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
 
             elif support_ == 2:
                 armr_d.append("Resin Bolt 10 tonne")
@@ -1106,29 +1000,13 @@ if support_j == 1:
                 no_of_Bolts_Junction_row = pow(no_of_Bolts_Junction, 0.5)
                 b = no_of_Bolts_Junction_row
                 print("Number of Bolts at Junction is {}".format(no_of_Bolts_Junction))
-                print(
-                    "Number of Bolts in a row at Junction is {}".format(
-                        no_of_Bolts_Junction_row
-                    )
-                )
+                print("Number of Bolts in a row at Junction is {}".format(no_of_Bolts_Junction_row))
                 print("Calculating Spacings....")
                 Bolts_spacing_Junction = t3 / no_of_Bolts_Junction
-                print(
-                    "Spacing Between Bolts in Junction is {} m".format(
-                        format(Bolts_spacing_Junction, "0.2f")
-                    )
-                )
+                print("Spacing Between Bolts in Junction is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
                 support_load_provided = (no_of_Bolts_Junction * 10) / (t3 * t3)
-                print(
-                    "Support Load Provided is {}t/m2".format(
-                        format(support_load_provided, "0.2f")
-                    )
-                )
-                print(
-                    "Rock Load in Junction is {}t/m2".format(
-                        format(Rock_load_Junction, "0.2f")
-                    )
-                )
+                print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                print("Rock Load in Junction is {}t/m2".format(format(Rock_load_Junction, "0.2f")))
                 fos_j = support_load_provided / Rock_load_Junction
                 while not (1.45 <= fos_j <= 2.0):
                     if fos_j <= 1.45:

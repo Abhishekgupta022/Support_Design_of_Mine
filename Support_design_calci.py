@@ -5,12 +5,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 
 import datetime
 
-print(
-    "--------*******--------********-------------**********------------*******---------"
-)
-ltr = (
-    struct_rating
-) = rsr = b = b_g = sdr = gsr = Bolts_spacing_Junction = Bolts_spacing_Gallery = 0
+print("--------*******--------********-------------**********------------*******---------")
+ltr = (struct_rating) = rsr = b = b_g = sdr = gsr = Bolts_spacing_Junction = Bolts_spacing_Gallery = 0
 rmr = []
 ltr_r = []
 struct_rating_r = []
@@ -152,18 +148,14 @@ while i < 2:
                 ltr = 30
                 print("Layer thickness Rating is ", ltr)
             else:
-                print(
-                    f"Invalid Input \nYour Input {float(lt)}\nPlease Enter the Layer Thickness in [0-100]cm"
-                )
+                print(f"Invalid Input \nYour Input {float(lt)}\nPlease Enter the Layer Thickness in [0-100]cm")
                 continue
             ltr_r.append(ltr)
             break
         except ValueError:
             print("Invalid Input")
 
-    print(
-        "--------*******--------********-------------**********------------*******---------"
-    )
+    print("--------*******--------********-------------**********------------*******---------")
     while True:
         while True:
             try:
@@ -229,17 +221,13 @@ while i < 2:
                 struct_rating = 25
                 print("Your Structural Rating is ", struct_rating)
             else:
-                print(
-                    f"Invalid Input \nYour Input {int(sti)}\nPlease Enter the Structural Rating again in [0-16]cm"
-                )
+                print(f"Invalid Input \nYour Input {int(sti)}\nPlease Enter the Structural Rating again in [0-16]cm")
                 continue
             struct_rating_r.append(struct_rating)
             break
         except ValueError:
             print("Invalid Input")
-    print(
-        "--------*******--------********-------------**********------------*******---------"
-    )
+    print("--------*******--------********-------------**********------------*******---------")
     while True:
         while True:
             try:
@@ -254,53 +242,25 @@ while i < 2:
         try:
             if 0 <= float(sld) < 30:
                 sdr = 0
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 30 <= float(sld) < 40:
                 sdr = 1
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 40 <= float(sld) < 50:
                 sdr = 2
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 50 <= float(sld) < 60:
                 sdr = 3
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 60 <= float(sld) < 65:
                 sdr = 4
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 65 <= float(sld) < 70:
                 sdr = 5
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 70 <= float(sld) < 75:
                 sdr = 6
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 75 <= float(sld) < 80:
                 sdr = 7
                 print(
@@ -1172,32 +1132,16 @@ if support_j == 1:
                 fos_j = support_load_provided / Rock_load_Junction
                 while not (1.45 <= fos_j <= 2.0):
                     if fos_j <= 1.45:
-                        b = int(
-                            input("Enter Number of Bolts greater than {}:  ".format(b))
-                        )
+                        b = int(input("Enter Number of Bolts greater than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
-                        b = int(
-                            input("Enter Number of Bolts less than {}:  ".format(b))
-                        )
+                        b = int(input("Enter Number of Bolts less than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     Bolts_spacing_Junction = t3 / b
-                    print(
-                        "Spacing Between Bolts in Gallery is {} m".format(
-                            format(Bolts_spacing_Junction, "0.2f")
-                        )
-                    )
+                    print("Spacing Between Bolts in Gallery is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
                     support_load_provided = (b * 10) / (t3 * Bolts_spacing_Junction)
-                    print(
-                        "Support Load Provided is {}t/m2".format(
-                            format(support_load_provided, "0.2f")
-                        )
-                    )
-                    print(
-                        "Rock Load in Gallery is {}t/m2".format(
-                            format(Rock_load_Junction, "0.2f")
-                        )
-                    )
+                    print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                    print("Rock Load in Gallery is {}t/m2".format(format(Rock_load_Junction, "0.2f")))
                     fos_j = support_load_provided / Rock_load_Junction
                     if fos_j > 2:
                         print("Current FOS is {}".format(format(fos_j, "0.2f")))
@@ -1206,18 +1150,10 @@ if support_j == 1:
                         print("Current FOS is {}".format(format(fos_j, "0.2f")))
                         print("Increase Number of Bolts than {}".format(b))
                 print("Factor of Safety is {}".format(format(fos_j, "0.2f")))
-                print(
-                    "Number of Bolts Required At Junction is {}X{} is {}".format(
-                        b, b, pow(b, 2)
-                    )
-                )
+                print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 
                 Bolts_spacing_Junction = t3 / b
-                print(
-                    "New Spacing Between Bolts in Junction is {} m".format(
-                        format(Bolts_spacing_Junction, "0.2f")
-                    )
-                )
+                print("New Spacing Between Bolts in Junction is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
 
             elif support_ == 3:
                 a = float(input("Enter the loading capacity in tonne:  "))
@@ -1229,59 +1165,27 @@ if support_j == 1:
                 no_of_Bolts_Junction_row = pow(no_of_Bolts_Junction, 0.5)
                 b = no_of_Bolts_Junction_row
                 print("Number of Bolts at Junction is {}".format(no_of_Bolts_Junction))
-                print(
-                    "Number of Bolts in a row at Junction is {}".format(
-                        no_of_Bolts_Junction_row
-                    )
-                )
+                print("Number of Bolts in a row at Junction is {}".format(no_of_Bolts_Junction_row))
                 print("Calculating Spacings....")
                 Bolts_spacing_Junction = t3 / no_of_Bolts_Junction
-                print(
-                    "Spacing Between Bolts in Junction is {} m".format(
-                        format(Bolts_spacing_Junction, "0.2f")
-                    )
-                )
+                print("Spacing Between Bolts in Junction is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
                 support_load_provided = (no_of_Bolts_Junction * a) / (t3 * t3)
-                print(
-                    "Support Load Provided is {}t/m2".format(
-                        format(support_load_provided, "0.2f")
-                    )
-                )
-                print(
-                    "Rock Load in Junction is {}t/m2".format(
-                        format(Rock_load_Junction, "0.2f")
-                    )
-                )
+                print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                print("Rock Load in Junction is {}t/m2".format(format(Rock_load_Junction, "0.2f")))
                 fos_j = support_load_provided / Rock_load_Junction
                 while not (1.45 <= fos_j <= 2.0):
                     # b = int(input("Enter Number of Bolts greater/less than {}:  ".format(no_of_Bolts_Junction_row)))
                     if fos_j <= 1.45:
-                        b = int(
-                            input("Enter Number of Bolts greater than {}:  ".format(b))
-                        )
+                        b = int(input("Enter Number of Bolts greater than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     elif fos_j >= 2.0:
-                        b = int(
-                            input("Enter Number of Bolts less than {}:  ".format(b))
-                        )
+                        b = int(input("Enter Number of Bolts less than {}:  ".format(b)))
                         print("Your Input: {}".format(b))
                     Bolts_spacing_Junction = t3 / b
-                    print(
-                        "Spacing Between Bolts in Junction is {} m".format(
-                            format(Bolts_spacing_Junction, "0.2f")
-                        )
-                    )
+                    print("Spacing Between Bolts in Junction is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
                     support_load_provided = (b * a) / (t3 * Bolts_spacing_Junction)
-                    print(
-                        "Support Load Provided is {}t/m2".format(
-                            format(support_load_provided, "0.2f")
-                        )
-                    )
-                    print(
-                        "Rock Load in Junction is {}t/m2".format(
-                            format(Rock_load_Junction, "0.2f")
-                        )
-                    )
+                    print("Support Load Provided is {}t/m2".format(format(support_load_provided, "0.2f")))
+                    print("Rock Load in Junction is {}t/m2".format(format(Rock_load_Junction, "0.2f")))
                     fos_j = support_load_provided / Rock_load_Junction
                     if fos_j > 2:
                         print("Current FOS is {}".format(format(fos_j, "0.2f")))
@@ -1290,21 +1194,11 @@ if support_j == 1:
                     elif fos_j < 1.45:
                         print("Current FOS is {}".format(format(fos_j, "0.2f")))
                         print("Increase Number of Bolts than {}".format(b))
-                print(
-                    "Factor of Safety at junction is {}".format(format(fos_j, "0.2f"))
-                )
-                print(
-                    "Number of Bolts Required At Junction is {}X{} is {}".format(
-                        b, b, pow(b, 2)
-                    )
-                )
+                print("Factor of Safety at junction is {}".format(format(fos_j, "0.2f")))
+                print("Number of Bolts Required At Junction is {}X{} is {}".format(b, b, pow(b, 2)))
 
                 Bolts_spacing_Junction = t3 / b
-                print(
-                    "New Spacing Between Bolts in Junction is {} m".format(
-                        format(Bolts_spacing_Junction, "0.2f")
-                    )
-                )
+                print("New Spacing Between Bolts in Junction is {} m".format(format(Bolts_spacing_Junction, "0.2f")))
 
             else:
                 print("Enter the Valid Input Again!!")
@@ -1356,9 +1250,7 @@ content = [
     Spacer(1, 12),
     Paragraph("<b>ORE Information</b>", normal_style),
     Paragraph(f"Mines Type : <b>{armr_d[9]}:{ore}</b>"),
-    Paragraph(
-        "-----------------------------------------------------------------------------------"
-    ),
+    Paragraph("-----------------------------------------------------------------------------------"),
     Paragraph(f"Layer Thickness Rating : <b>{ltr_r[0]}</b>"),
     Paragraph(f"Structural Rating : <b>{struct_rating_r[0]}</b>"),
     Paragraph(f"Slake Durability Rating : <b>{sdr_r[0]}</b>"),
@@ -1366,76 +1258,38 @@ content = [
     Paragraph(f"Ground Water Rating : <b>{gsr_r[0]}</b>"),
     Spacer(1, 6),
     Paragraph("<b>Roof Information</b>", normal_style),
-    Paragraph(
-        "-----------------------------------------------------------------------------------"
-    ),
+    Paragraph("-----------------------------------------------------------------------------------"),
     Paragraph(f"Layer Thickness Rating : <b>{ltr_r[1]}</b>"),
     Paragraph(f"Structural Rating : <b>{struct_rating_r[1]}</b>"),
     Paragraph(f"Slake Durability Rating : <b>{sdr_r[1]}</b>"),
     Paragraph(f"Rock Strength Rating : <b>{rsr_r[1]}</b>"),
     Paragraph(f"Ground Water Rating : <b>{gsr_r[1]}</b>"),
     Paragraph("<b>Important</b>"),
-    Paragraph(
-        "-----------------------------------------------------------------------------------"
-    ),
-    Paragraph(
-        f"OverLying Strata of ORE : <b> {t1} m</b> | Intermediate Roof Strata : <b> {t2} m</b>"
-    ),
+    Paragraph("-----------------------------------------------------------------------------------"),
+    Paragraph(f"OverLying Strata of ORE : <b> {t1} m</b> | Intermediate Roof Strata : <b> {t2} m</b>"),
     Paragraph(f"Mean Density : <b>{mean_density} t/m3</b>"),
     Paragraph(f"COMBINED RMR : <b>{crmr:.2f}</b>"),
     Paragraph("Adjusted RMR After Calculating"),
-    Paragraph(
-        "-----------------------------------------------------------------------------------"
-    ),
+    Paragraph("-----------------------------------------------------------------------------------"),
     Paragraph("1. Depth [<b>{} m</b>] : <b>{:.2f}</b>".format(armr_d[0], armr_d[1])),
-    Paragraph(
-        "2. Lateral Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[2], armr_d[3])
-    ),
-    Paragraph(
-        "3. Induced Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[4], armr_d[5])
-    ),
-    Paragraph(
-        "4. Mining Method [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[6], armr_d[7])
-    ),
+    Paragraph("2. Lateral Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[2], armr_d[3])),
+    Paragraph("3. Induced Stress [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[4], armr_d[5])),
+    Paragraph("4. Mining Method [<b>{}</b>] : <b>{:.2f}</b>".format(armr_d[6], armr_d[7])),
     Paragraph("5. Gallery Width [<b>{} m</b>] : <b>{:.2f}</b>".format(t3, armr_d[8])),
     Paragraph(f"Final RMR of Mine:<b> {armr:.2f}</b>"),
     Paragraph(f"Remarks : <b>{rmr_classification} </b>", normal_style),
     Paragraph("Suggestion Based Upon Observation of Mine", normal_style),
-    Paragraph(
-        "-----------------------------------------------------------------------------------"
-    ),
+    Paragraph("-----------------------------------------------------------------------------------"),
     Paragraph(f"Roof Support Provided in Gallery : <b>{armr_d[10]}</b>"),
-    Paragraph(
-        "Factor of Safety at Gallery is <b>{:.2f}</b>".format(fos_g), normal_style
-    ),
-    Paragraph(
-        "Number of Bolts Required At Gallery is <b>{}</b>".format(b_g), normal_style
-    ),
-    Paragraph(
-        "Bolts Spacing in Gallery is <b>{} m</b>".format(
-            format(Bolts_spacing_Gallery, "0.2f")
-        ),
-        normal_style,
-    ),
+    Paragraph("Factor of Safety at Gallery is <b>{:.2f}</b>".format(fos_g), normal_style),
+    Paragraph("Number of Bolts Required At Gallery is <b>{}</b>".format(b_g), normal_style),
+    Paragraph("Bolts Spacing in Gallery is <b>{} m</b>".format(format(Bolts_spacing_Gallery, "0.2f")), normal_style,),
     Paragraph(f"Roof Support Provided at Junction : <b>{armr_d[11]}</b>"),
-    Paragraph(
-        "Factor of Safety at Junction is <b>{:.2f}</b>".format(fos_j), normal_style
-    ),
-    Paragraph(
-        "Number of Bolts Required At Junction is <b>{}X{} is {}</b>".format(
-            b, b, pow(b, 2)
-        ),
-        normal_style,
-    ),
-    Paragraph(
-        "Bolts Spacing at Junction : <b>{} m</b>".format(
-            format(Bolts_spacing_Junction, "0.2f")
-        ),
-        normal_style,
-    ),
+    Paragraph("Factor of Safety at Junction is <b>{:.2f}</b>".format(fos_j), normal_style),
+    Paragraph("Number of Bolts Required At Junction is <b>{}X{} is {}</b>".format(b, b, pow(b, 2)), normal_style,),
+    Paragraph("Bolts Spacing at Junction : <b>{} m</b>".format(format(Bolts_spacing_Junction, "0.2f")), normal_style,),
     Paragraph(f"Length of Bolt: <b>{final_l} m </b>"),
-    Paragraph("-----------------------------------------------------------------------------------"
-    ),
+    Paragraph("-----------------------------------------------------------------------------------"),
     Spacer(1, 14),
     Paragraph(f"<b>Report Generated @: {datetime.datetime.now()}</b>", normal_style),
 ]

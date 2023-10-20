@@ -1,8 +1,6 @@
 from reportlab.lib.pagesizes import letter
-
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
-
 import datetime
 
 print("--------*******--------********-------------**********------------*******---------")
@@ -263,115 +261,55 @@ while i < 2:
                 print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 75 <= float(sld) < 80:
                 sdr = 7
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 80 <= float(sld) < 85:
                 sdr = 8
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 85 <= float(sld) < 87.4:
                 sdr = 9
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 87.4 <= float(sld) < 89:
                 sdr = 10
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 89 <= float(sld) < 92.2:
                 sdr = 11
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 92.2 <= float(sld) < 94.6:
                 sdr = 12
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 94.6 <= float(sld) < 97:
                 sdr = 13
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 97 <= float(sld) < 97.5:
                 sdr = 14
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 97.5 <= float(sld) < 98:
                 sdr = 15
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 98 <= float(sld) < 98.5:
                 sdr = 16
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 98.5 <= float(sld) < 99:
                 sdr = 17
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif float(sld) >= 99.3 > float(sld):
                 sdr = 18
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif 99.3 <= float(sld) < 99.6:
                 sdr = 19
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
             elif float(sld) == 100:
                 sdr = 20
-                print(
-                    "Your Slake Durability Rating for {} % is {} ".format(
-                        float(sld), sdr
-                    )
-                )
+                print("Your Slake Durability Rating for {} % is {} ".format(float(sld), sdr))
 
             else:
-                print(
-                    f"Invalid Input \nYour Input {float(sld)}\nPlease Enter the Slake Durability rating in [0-100]"
-                )
+                print(f"Invalid Input \nYour Input {float(sld)}\nPlease Enter the Slake Durability rating in [0-100]")
                 continue
             sdr_r.append(sdr)
             break
         except ValueError:
             print("Invalid Input")
-    print(
-        "--------*******--------********-------------**********------------*******---------"
-    )
+    print("--------*******--------********-------------**********------------*******---------")
 
     while True:
         while True:
@@ -436,18 +374,14 @@ while i < 2:
                 rsr = 15
                 print("Rock Strength Rating at {} kg/cm² is {}".format(float(rst), rsr))
             else:
-                print(
-                    f"Invalid input Rock Strength must be positive\nYou Entered {float(rst)}"
-                )
+                print(f"Invalid input Rock Strength must be positive\nYou Entered {float(rst)}")
                 continue
             rsr_r.append(rsr)
             break
         except ValueError:
             print("Invalid Input")
 
-    print(
-        "--------*******--------********-------------**********------------*******---------"
-    )
+    print("--------*******--------********-------------**********------------*******---------")
     while True:
         while True:
             try:
@@ -463,49 +397,31 @@ while i < 2:
         try:
             if float(grs) > 5000:
                 gsr = 0
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 2000 < float(grs) <= 5000:
                 gsr = 1
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 800 < float(grs) <= 2000:
                 gsr = 2
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 300 < float(grs) <= 800:
                 gsr = 3
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 200 < float(grs) <= 300:
                 gsr = 4
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 140 < float(grs) <= 200:
                 gsr = 5
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 80 < float(grs) <= 140:
                 gsr = 6
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 20 < float(grs) <= 80:
                 gsr = 7
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 10 < float(grs) <= 20:
                 gsr = 8
-                print(
-                    "Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr)
-                )
+                print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
             elif 0 < float(grs) <= 10:
                 gsr = 9
                 print("Ground Seepage Rating for {}ml/min is {}".format(float(grs), gsr))
